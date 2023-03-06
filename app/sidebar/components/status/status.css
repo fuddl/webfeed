@@ -1,0 +1,15 @@
+.status {
+	--margin: 1rem;
+	padding: var(--margin);
+	border: 1px solid var(--toolbar-border);
+	margin: 1em;
+	border-radius: 2px;
+}
+
+.status__wide-image {
+	margin: 0 calc(var(--margin) * -1);
+}
+
+.status__date {
+	font-size: .75em;
+}

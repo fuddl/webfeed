@@ -1,0 +1,44 @@
+{
+  "name": "__MSG_appName__",
+  "short_name": "__MSG_appShortName__",
+  "description": "__MSG_appDescription__",
+  "version": "0.0.0",
+  "manifest_version": 2,
+  "default_locale": "en",
+  "icons": {
+    "16": "images/feed.svg",
+    "128": "images/feed.svg"
+  },
+  "background": {
+    "scripts": [
+      "scripts/background.js"
+    ]
+  },
+  "sidebar_action": {
+    "default_icon": "images/feed.svg",
+    "default_title": "Feeds",
+    "default_panel": "sidebar/feeds.html",
+    "open_at_install": true
+  },
+  "permissions": [
+    "storage",
+    "webNavigation",
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "run_at": "document_end",
+      "js": ["content.js"]
+    }
+  ],
+  "page_action": {
+    "default_icon": {
+      "19": "images/feed.svg",
+      "38": "images/feed.svg"
+    },
+    "default_title": "__MSG_browserActionTitle__"
+  }
+}

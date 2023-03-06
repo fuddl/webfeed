@@ -1,0 +1,36 @@
+.header {
+	border-bottom: 1px solid var(--toolbar-border);
+	box-shadow: 0 2px 8px var(--toolbar-box-shadow);
+
+	padding: 1em;
+	display: grid;
+	grid-template-rows: auto auto;
+	grid-template-areas: 'title' 'subtitle';
+	grid-gap: .5em;
+	line-height: 1;
+	position: sticky;
+	top: 0;
+	background: var(--paper);
+}
+
+.header__title {
+	margin: 0;
+	grid-area: title;
+}
+
+.header__subtitle {
+	grid-area: subtitle;
+	margin: auto 0 0;
+}
+
+.header__avatar {
+	grid-area: avatar;
+	border: 1px solid;
+	margin: auto;
+}
+
+.header--has-image {
+	grid-template-columns: 45px 1fr;
+	grid-template-areas: 'avatar title'
+						 'avatar subtitle';
+}

@@ -1,0 +1,52 @@
+:root {
+	--paper: white;
+	--ink: black;
+
+	--toolbar-border: rgba(12, 12, 13, 0.2);
+	--toolbar-box-shadow: rgba(12, 12, 13, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--paper: #42414C;
+		--ink: #FBFBFE;
+	}
+}
+
+body {
+	background: var(--paper);
+	color: var(--ink);
+	font-family: Helvetica, Arial, sans-serif;
+	user-select: text;
+	line-height: 1.4;
+}
+
+img {
+	max-width: 100%;
+}
+
+h1 {
+	font-weight: 100;
+	font-size: 1.5rem;
+	margin: 1rem 0;
+}
+
+h2 {
+	font-weight: 900;
+	font-size: 1.4rem;
+	margin: 1rem 0;
+}
+
+a {
+	color: AccentColor;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+hr {
+	color: var(--toolbar-border);
+	height: 1px;
+}
