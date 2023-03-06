@@ -2,7 +2,7 @@ import { requreStylesheet } from './../style.mjs'
 
 
 const article = (vars) => {
-	requreStylesheet('./components/article/article.css')
+	requreStylesheet('sidebar/components/article/article.css')
 
 	const wrapper = document.createElement('section')
 	wrapper.classList.add('article')

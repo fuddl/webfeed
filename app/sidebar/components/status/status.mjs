@@ -2,7 +2,7 @@ import { requreStylesheet } from './../style.mjs'
 
 
 const status = (vars) => {
-	requreStylesheet('./components/status/status.css')
+	requreStylesheet('sidebar/components/status/status.css')
 
 	const wrapper = document.createElement('section')
 	wrapper.classList.add('status')

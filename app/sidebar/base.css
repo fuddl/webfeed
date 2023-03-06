@@ -4,6 +4,7 @@
 
 	--toolbar-border: rgba(12, 12, 13, 0.2);
 	--toolbar-box-shadow: rgba(12, 12, 13, 0.1);
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,6 +20,8 @@ body {
 	font-family: Helvetica, Arial, sans-serif;
 	user-select: text;
 	line-height: 1.4;
+	max-width: 48em;
+	margin: auto;
 }
 
 img {

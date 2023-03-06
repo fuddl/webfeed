@@ -31,7 +31,7 @@
     {
       "matches": ["<all_urls>"],
       "run_at": "document_end",
-      "js": ["content.js"]
+      "js": ["content-combined.js"]
     }
   ],
   "page_action": {

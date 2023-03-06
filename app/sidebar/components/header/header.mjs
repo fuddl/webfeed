@@ -1,7 +1,7 @@
 import { requreStylesheet } from './../style.mjs'
 
 const header = (vars) => {
-	requreStylesheet('./components/header/header.css')
+	requreStylesheet('sidebar/components/header/header.css')
 
 	const wrapper = document.createElement('div')
 	wrapper.classList.add('header')

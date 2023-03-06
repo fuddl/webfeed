@@ -1,4 +1,5 @@
 import { displayFeed } from './sidebar/feed.mjs'
+import { requreStylesheet } from './sidebar/components/style.mjs'
 
 const checkForFeeds = () => {
 	const feeds = {}
@@ -29,7 +30,9 @@ chrome.runtime.sendMessage({
 
     try {
         const dom = new window.DOMParser().parseFromString(pre.innerText, "text/xml")
-        displayFeed(dom);
+        pre.parentNode.removeChild(pre)
+        requreStylesheet('sidebar/base.css')
+        displayFeed(dom)
     } catch (e) {
         console.error(e);
     }
