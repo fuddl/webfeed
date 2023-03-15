@@ -32,10 +32,10 @@ function detectXml({
         name
     }) => name.toLowerCase() === 'content-type');
     const contentType = (contentHeader && contentHeader.value) || '';
-    if (['application/rss+xml', 'application/xml', 'text/xml'].find(type => contentType.toLowerCase().includes(type))) {
+    if (['application/atom+xml', 'application/rss+xml', 'application/xml', 'text/xml'].find(type => contentType.toLowerCase().includes(type))) {
         
         tabTypes[tabId] = 'XML';
-        contentHeader.value = contentType.replace(/(?:text|application)\/(rss\+)?xml/, 'text/plain;charset=utf-8');
+        contentHeader.value = contentType.replace(/(?:text|application)\/(?:rss|atom)?\+?xml/, 'text/plain;charset=utf-8');
         return {
             responseHeaders
         };

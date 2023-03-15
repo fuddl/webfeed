@@ -1,18 +1,18 @@
 {
   "appName": {
-    "message": "webfeed",
+    "message": "Webfeed",
     "description": "The name of the application"
   },
   "appShortName": {
-    "message": "webfeed",
+    "message": "Webfeed",
     "description": "The short_name (maximum of 12 characters recommended) is a short version of the app's name."
   },
   "appDescription": {
-    "message": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "message": "Webfeed enables users to read RSS or Atom feeds in their browser, providing a user-friendly way to stay current with their favorite websites, news sources, blogs, and podcasts. This tool streamlines access to feed content, making it easier for users to stay informed.",
     "description": "The description of the application"
   },
   "browserActionTitle": {
-    "message": "webfeed",
+    "message": "Webfeed",
     "description": "The title of the browser action button"
   }
 }

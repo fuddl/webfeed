@@ -54,7 +54,10 @@ hr {
 	height: 1px;
 }
 
-
 td {
 	border: 1px solid;
+}
+
+figure {
+	margin: 0;
 }

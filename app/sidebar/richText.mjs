@@ -18,6 +18,10 @@ const attributes = {
 	TH: {
 		colspan: () => true,
 		rowspan: () => true,
+	},
+	IMG: {
+		src: () => true,
+		alt: () => true,
 	}
 }
 

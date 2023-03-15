@@ -3,7 +3,7 @@ import { requreStylesheet } from './sidebar/components/style.mjs'
 
 const checkForFeeds = () => {
 	const feeds = {}
-	for (const link of document.querySelectorAll('link[rel="alternate"]:is([type="application/rss+xml"], [type="application/atom+xml"])')) {
+	for (const link of document.querySelectorAll('[href][rel="alternate"]:is([type="application/rss+xml"], [type="application/atom+xml"])')) {
 		feeds[link.href] = {
 			href: link.href,
 			title: link.getAttribute('title'),

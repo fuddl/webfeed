@@ -2,7 +2,7 @@
   "name": "__MSG_appName__",
   "short_name": "__MSG_appShortName__",
   "description": "__MSG_appDescription__",
-  "version": "0.0.0",
+  "version": "0.0.3",
   "manifest_version": 2,
   "default_locale": "en",
   "icons": {
@@ -36,12 +36,16 @@
   ],
   "page_action": {
     "browser_style": true,
-    "default_title": "Webfeeds",
     "default_popup": "pages/popup.html",
     "default_icon": {
       "19": "images/webfeed-page-action.svg",
       "38": "images/webfeed-page-action.svg"
     },
     "default_title": "__MSG_browserActionTitle__"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{076e1316-6b33-415b-9e2f-7f3673ae1ab6}"
+    }
   }
 }

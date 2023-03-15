@@ -34,7 +34,11 @@ const article = (vars) => {
 		}
 	}
 
-	wrapper.appendChild(vars.description)
+	if (vars?.content) {
+		wrapper.appendChild(vars.content)
+	} else if (vars?.description) {
+		wrapper.appendChild(vars.description)
+	}
 	
 
 	if (vars.image) {
