@@ -9,7 +9,7 @@
 	grid-gap: .5em;
 	line-height: 1;
 	position: sticky;
-	top: 0;
+	inset: 0 0 auto 0;
 	background: var(--paper);
 }
 

@@ -8,13 +8,13 @@ browser.runtime.onMessage.addListener(async (data, sender) => {
   if (data.type == 'foundFeeds') {
     browser.pageAction.show(sender.tab.id)
     
-    await browser.sidebarAction.setPanel({
+    await browser.pageAction.setPopup({
         tabId: sender.tab.id,
-        panel: browser.runtime.getURL('sidebar/feeds.html') + `?${JSON.stringify(data.feeds)}`,
+        popup: browser.runtime.getURL('pages/popup.html') + `?${JSON.stringify(data.feeds)}`,
     })      
-    browser.pageAction.onClicked.addListener(async () => {
-      await browser.sidebarAction.toggle()
-    })
+    // browser.pageAction.onClicked.addListener(async () => {
+    //   await browser.sidebarAction.toggle()
+    // })
   }
 })
 
@@ -32,9 +32,10 @@ function detectXml({
         name
     }) => name.toLowerCase() === 'content-type');
     const contentType = (contentHeader && contentHeader.value) || '';
-    if (['text/xml', 'application/xml;charset=utf-8'].find(type => contentType.toLowerCase().includes(type))) {
+    if (['application/rss+xml', 'application/xml', 'text/xml'].find(type => contentType.toLowerCase().includes(type))) {
+        
         tabTypes[tabId] = 'XML';
-        contentHeader.value = contentType.replace(/(?:text|application)\/xml/, 'text/plain;charset=utf-8');
+        contentHeader.value = contentType.replace(/(?:text|application)\/(rss\+)?xml/, 'text/plain;charset=utf-8');
         return {
             responseHeaders
         };
@@ -78,3 +79,4 @@ chrome.runtime.onMessage.addListener((_message, sender, sendResponse) => {
     delete tabTypes[tabId];
     sendResponse(contentType);
 });
+

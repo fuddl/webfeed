@@ -10,6 +10,14 @@ const attributes = {
 		href: (value) => {
 			return !value.startsWith('javascript:') ? value : false
 		}
+	},
+	TD: {
+		colspan: () => true,
+		rowspan: () => true,
+	},
+	TH: {
+		colspan: () => true,
+		rowspan: () => true,
 	}
 }
 

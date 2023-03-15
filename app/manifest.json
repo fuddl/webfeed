@@ -35,9 +35,12 @@
     }
   ],
   "page_action": {
+    "browser_style": true,
+    "default_title": "Webfeeds",
+    "default_popup": "pages/popup.html",
     "default_icon": {
-      "19": "images/feed.svg",
-      "38": "images/feed.svg"
+      "19": "images/webfeed-page-action.svg",
+      "38": "images/webfeed-page-action.svg"
     },
     "default_title": "__MSG_browserActionTitle__"
   }
