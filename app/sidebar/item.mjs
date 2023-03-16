@@ -54,7 +54,7 @@ const generateItem = (item) => {
 		description:
 			item.querySelector('description, summary')?.textContent ?
 			makeRichText(item.querySelector('description, summary').textContent) : null,
-		content: content,
+		content: content.childNodes.length > 0 ? content : null,
 	}
 
 	if ((data?.description || data?.content) && data?.title) {

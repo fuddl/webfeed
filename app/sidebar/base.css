@@ -54,8 +54,17 @@ hr {
 	height: 1px;
 }
 
-td {
-	border: 1px solid;
+table  {
+	width: 100%;
+	border: 1px solid var(--toolbar-border);
+}
+
+td, th {
+	padding: .25rem;
+}
+
+tbody th:first-child {
+	text-align: right;
 }
 
 figure {
