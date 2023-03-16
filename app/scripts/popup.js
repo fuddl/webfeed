@@ -1,19 +1,38 @@
 const feeds = JSON.parse(decodeURIComponent(document.location.search.substring(1)))
 
-const feedWrapper = document.getElementById('feed-list')
 
-for (const feed in feeds) {
-	const listItem = document.createElement('div')
-	listItem.classList.add('panel-list-item')
-	const itemText = document.createElement('div')
-	itemText.classList.add('text')
-	itemText.innerText = feeds[feed]?.title ?? feeds[feed].href
-	
-	listItem.appendChild(itemText)
-	feedWrapper.appendChild(listItem)
+const feedsByLang = {}
+for (const feed of feeds) {
+	let lang = feed?.lang ?? 'und'
+	if (!feedsByLang?.[lang]) {
+		feedsByLang[lang] = []
+	}
+	feedsByLang[lang].push(feed)
+}
 
-	listItem.addEventListener('click', () => {
-		console.debug('asdasdasd')
-		window.open(feeds[feed].href)
-	})
+for (const lang of Object.keys(feedsByLang)) {
+	for (const feed of feedsByLang[lang]) {
+		let targetSelector = 'feed-list-other-lang'
+		if (navigator.languages.includes(lang)) {
+			targetSelector = 'feed-list-preferred-lang'
+		} else if (lang === 'und') {
+			targetSelector = 'feed-list-unknown-lang'
+		}
+		const target = document.getElementById(targetSelector)
+		
+		const listItem = document.createElement('div')
+		listItem.classList.add('panel-list-item')
+		const itemText = document.createElement('div')
+		itemText.classList.add('text')
+		itemText.innerText = feed?.title ?? feed.href
+		
+		listItem.appendChild(itemText)
+		target.appendChild(listItem)
+		target.removeAttribute('hidden')
+
+		listItem.addEventListener('click', () => {
+			window.open(feed.href)
+		})
+
+	}
 }

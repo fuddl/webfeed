@@ -2,13 +2,14 @@ import { displayFeed } from './sidebar/feed.mjs'
 import { requreStylesheet } from './sidebar/components/style.mjs'
 
 const checkForFeeds = () => {
-	const feeds = {}
-	for (const link of document.querySelectorAll('[href][rel="alternate"]:is([type="application/rss+xml"], [type="application/atom+xml"])')) {
-		feeds[link.href] = {
+	const feeds = []
+	for (const link of document.querySelectorAll('[href]:is([type="application/rss+xml"], [type="application/atom+xml"])')) {
+		feeds.push({
 			href: link.href,
 			title: link.getAttribute('title'),
 			type: link.getAttribute('type'),
-		}
+			lang: link.getAttribute('hreflang'),
+		})
 	}
 	if (Object.entries(feeds).length > 0) {
 		(async () => {

@@ -9,11 +9,18 @@
 
 <div class="panel">
   <div class="panel-section panel-section-header">
-    <div class="icon-section-header" style="background: url(../images/icon-section-header.svg); background-size: contain;"></div>
+    <div
+      class="icon-section-header"
+      style="background: url(../images/icon-section-header.svg); background-size: contain;"
+    >    
+    </div>
     <div class="text-section-header">Webfeeds</div>
   </div>
-  <div id="feed-list" class="panel-section panel-section-list">
-
+  <div id="feed-list-preferred-lang" class="panel-section panel-section-list" hidden></div>
+  <div id="feed-list-unknown-lang" class="panel-section panel-section-list" hidden>
+  </div>
+  <div id="feed-list-other-lang" class="panel-section panel-section-list" hidden>
+    <div class="panel-section-separator"></div>
   </div>
 
   <script src="../scripts/popup.js"></script>
