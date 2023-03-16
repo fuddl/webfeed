@@ -29,6 +29,20 @@ const generateItem = (item) => {
 		}
 	}
 
+	const content = document.createDocumentFragment()
+
+	if (item.querySelector('content')?.textContent) {
+		content.append(makeRichText(querySelector('content').textContent))
+	} else if(item.getElementsByTagNameNS('http://purl.org/rss/1.0/modules/content/', 'encoded').length > 0) {
+		content.append(makeRichText(item.getElementsByTagNameNS('http://purl.org/rss/1.0/modules/content/', 'encoded')?.[0]?.textContent))
+	}
+
+
+
+	const categories = item.querySelectorAll('category')
+	const tags = []
+	categories.forEach((item) => { tags.push(item.textContent) })
+
 	const data = {
 		id: item.querySelector('guid, id')?.textContent,
 		image: itemImage,
@@ -36,12 +50,11 @@ const generateItem = (item) => {
 		title: item.querySelector('title')?.textContent,
 		link: item.querySelector('link')?.textContent,
 		contributors: contributors,
+		tags: tags,
 		description:
 			item.querySelector('description, summary')?.textContent ?
 			makeRichText(item.querySelector('description, summary').textContent) : null,
-		content:
-			item.querySelector('content')?.textContent ?
-			makeRichText(item.querySelector('content').textContent) : null,
+		content: content,
 	}
 
 	if ((data?.description || data?.content) && data?.title) {

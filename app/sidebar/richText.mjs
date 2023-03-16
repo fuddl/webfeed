@@ -1,5 +1,5 @@
 const heading = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6']
-const block = ['P', 'BLOCKQUOTE', 'FIGURE', ...heading]
+const block = ['P', 'BLOCKQUOTE', 'FIGURE', 'FIGCAPTION', ...heading]
 const table = ['TABLE', 'THEAD', 'TBODY', 'TR', 'TH', 'TD', 'COLGROUP', 'COL']
 const inline = ['A', 'STRONG', 'EM', 'INS', 'DEL', 'SUP', 'SUB', 'CODE', 'PICTURE', 'SOURCE']
 const selfClosing = ['IMG', 'BR', 'HR']

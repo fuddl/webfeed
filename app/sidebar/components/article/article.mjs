@@ -34,18 +34,30 @@ const article = (vars) => {
 		}
 	}
 
+	if (vars.image) {
+		const image = document.createElement('img')
+		image.setAttribute('src', vars.image)
+		wrapper.appendChild(image)
+	}
+
 	if (vars?.content) {
 		wrapper.appendChild(vars.content)
 	} else if (vars?.description) {
 		wrapper.appendChild(vars.description)
 	}
 	
-
-	if (vars.image) {
-		const image = document.createElement('img')
-		image.setAttribute('src', vars.image)
-		wrapper.appendChild(image)
+	if (vars?.tags?.length > 0) {
+		const tagWrapper = document.createElement('p')
+		for (tag of vars.tags) {
+			const tagElement = document.createElement('span')
+			tagElement.classList.add('article__tag')
+			tagElement.innerText = tag
+			tagWrapper.appendChild(tagElement)
+			tagWrapper.appendChild(document.createTextNode(' '))
+		}
+		wrapper.appendChild(tagWrapper)
 	}
+
 	return wrapper
 }
 

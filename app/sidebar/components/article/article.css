@@ -21,3 +21,11 @@
 .article__title + .article__contributors {
 	margin-top: -1em;
 }
+
+.article__tag {
+	display: inline-block;
+	background: var(--toolbar-border);
+	font-size: .75rem;
+	padding: 0 .3em;
+	border-radius: .2rem;
+}
