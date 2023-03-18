@@ -1,5 +1,6 @@
 import { status } from './components/status/status.mjs'
 import { article } from './components/article/article.mjs'
+import { podcastPlayer } from './components/podcastPlayer/podcastPlayer.mjs'
 import { makeRichText } from './richText.mjs'
 
 const generateItem = (item) => {
@@ -43,6 +44,14 @@ const generateItem = (item) => {
 	const tags = []
 	categories.forEach((item) => { tags.push(item.textContent) })
 
+	const audioEnclosures = Array.from(item.querySelectorAll('enclosure[type^="audio/"]'))
+		.map(function(el) {
+		  return {
+		  	url: el.getAttribute('url'),
+		  	type: el.getAttribute('type'),
+		  }
+		});
+
 	const data = {
 		id: item.querySelector('guid, id')?.textContent,
 		image: itemImage,
@@ -51,10 +60,15 @@ const generateItem = (item) => {
 		link: item.querySelector('link')?.textContent,
 		contributors: contributors,
 		tags: tags,
+		audios: audioEnclosures,
 		description:
 			item.querySelector('description, summary')?.textContent ?
 			makeRichText(item.querySelector('description, summary').textContent) : null,
 		content: content.childNodes.length > 0 ? content : null,
+	}
+
+	if (data?.audios?.length > 0) {
+		return podcastPlayer(data)
 	}
 
 	if ((data?.description || data?.content) && data?.title) {

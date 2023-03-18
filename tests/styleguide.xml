@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Styleguide</title>
+    <link>http://example.com/</link>
+    <description>Tests for the basic CSS</description>
+    <language>en</language>
+    <lastBuildDate></lastBuildDate>
+    <docs></docs>
+    <ttl></ttl>
+    <item>
+      <title>Headlines</title>
+      <link>https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements</link>
+      <pubDate></pubDate>
+      <description>Headline Elements</description>
+      <guid>headlines</guid>
+      <content:encoded><![CDATA[
+        <h1>Headline 1</h1>
+        <p>Inventore dolore voluptatum doloremque placeat animi aliquam. Suscipit neque exercitationem laborum voluptas voluptates provident. Veniam nobis inventore consequatur et eum quia. Aut quod cupiditate amet quidem quidem nihil et corporis. Similique magni qui aliquam nihil placeat possimus dolorum. Aut qui quis voluptas quas.</p>
+        <h2>Headline 2</h2>
+        <p>Inventore dolore voluptatum doloremque placeat animi aliquam. Suscipit neque exercitationem laborum voluptas voluptates provident. Veniam nobis inventore consequatur et eum quia. Aut quod cupiditate amet quidem quidem nihil et corporis. Similique magni qui aliquam nihil placeat possimus dolorum. Aut qui quis voluptas quas.</p>
+        <h3>Headline 3</h3>
+        <p>Inventore dolore voluptatum doloremque placeat animi aliquam. Suscipit neque exercitationem laborum voluptas voluptates provident. Veniam nobis inventore consequatur et eum quia. Aut quod cupiditate amet quidem quidem nihil et corporis. Similique magni qui aliquam nihil placeat possimus dolorum. Aut qui quis voluptas quas.</p>
+        <h4>Headline 4</h4>
+        <p>Inventore dolore voluptatum doloremque placeat animi aliquam. Suscipit neque exercitationem laborum voluptas voluptates provident. Veniam nobis inventore consequatur et eum quia. Aut quod cupiditate amet quidem quidem nihil et corporis. Similique magni qui aliquam nihil placeat possimus dolorum. Aut qui quis voluptas quas.</p>
+        <h5>Headline 5</h5>
+        <p>Inventore dolore voluptatum doloremque placeat animi aliquam. Suscipit neque exercitationem laborum voluptas voluptates provident. Veniam nobis inventore consequatur et eum quia. Aut quod cupiditate amet quidem quidem nihil et corporis. Similique magni qui aliquam nihil placeat possimus dolorum. Aut qui quis voluptas quas.</p>
+        <h6>Headline 6</h6>
+        <p>Inventore dolore voluptatum doloremque placeat animi aliquam. Suscipit neque exercitationem laborum voluptas voluptates provident. Veniam nobis inventore consequatur et eum quia. Aut quod cupiditate amet quidem quidem nihil et corporis. Similique magni qui aliquam nihil placeat possimus dolorum. Aut qui quis voluptas quas.</p>
+    ]]></content:encoded>
+    </item>
+    <item>
+      <title>Tables</title>
+      <link>https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements</link>
+      <pubDate></pubDate>
+      <description>table Elements</description>
+      <guid>headlines</guid>
+      <content:encoded><![CDATA[
+        <table>
+          <caption>Caption</caption>
+          <thead>
+              <tr>
+                <td></td>
+                <th>Knocky</th>
+                <th>Flor</th>
+                <th>Ella</th>
+                <th>Juan</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <th>Breed</th>
+                <td>Jack Russell</td>
+                <td>Poodle</td>
+                <td>Streetdog</td>
+                <td>Cocker Spaniel</td>
+              </tr>
+              <tr>
+                <th>Age</th>
+                <td>16</td>
+                <td>9</td>
+                <td>10</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <th>Owner</th>
+                <td>Mother-in-law</td>
+                <td>Me</td>
+                <td>Me</td>
+                <td>Sister-in-law</td>
+              </tr>
+              <tr>
+                <th>Eating Habits</th>
+                <td>Eats everyone's leftovers</td>
+                <td>Nibbles at food</td>
+                <td>Hearty eater</td>
+                <td>Will eat till he explodes</td>
+              </tr>
+          </tbody>
+        </table>
+    ]]></content:encoded>
+    </item>
+    <item>
+      <title>Lists</title>
+      <link>https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements</link>
+      <pubDate></pubDate>
+      <description>List Elements</description>
+      <guid>lists</guid>
+      <content:encoded><![CDATA[
+        <ul>
+          <li>Inventore dolore voluptatum doloremque placeat animi aliquam.</li>
+          <li>Suscipit neque exercitationem laborum voluptas voluptates provident. Veniam nobis inventore consequatur et eum quia.</li>
+          <li>Aut quod cupiditate amet quidem quidem nihil et corporis. Similique magni qui aliquam nihil placeat possimus dolorum. Aut qui quis voluptas quas.</li>
+        </ul>
+        <ol>
+          <li>Inventore dolore voluptatum doloremque placeat animi aliquam.</li>
+          <li>Suscipit neque exercitationem laborum voluptas voluptates provident. Veniam nobis inventore consequatur et eum quia.</li>
+          <li>Aut quod cupiditate amet quidem quidem nihil et corporis. Similique magni qui aliquam nihil placeat possimus dolorum. Aut qui quis voluptas quas.</li>
+        </ol>
+        <dl>
+          <dt>Inventore dolore</dt><dd>voluptatum doloremque placeat animi aliquam.</dd>
+          <dt>Suscipit neque exercitationem</dt><dd>laborum voluptas voluptates provident. Veniam nobis inventore consequatur et eum quia.</dd>
+          <dt>Aut quod</dt><dd>cupiditate amet quidem quidem nihil et corporis. Similique magni qui aliquam nihil placeat possimus dolorum. Aut qui quis voluptas quas.</dd>
+        </dl>
+    ]]></content:encoded>
+    </item>
+  </channel>
+</rss>

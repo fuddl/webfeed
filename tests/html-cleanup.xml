@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>HTML cleanup test</title>
+    <link>http://example.com/</link>
+    <description>Tests for HTML cleanup</description>
+    <language>en</language>
+    <lastBuildDate></lastBuildDate>
+    <docs></docs>
+    <ttl></ttl>
+    <item>
+      <title>Inline images</title>
+      <link></link>
+      <pubDate></pubDate>
+      <description></description>
+      <guid>headlines</guid>
+      <content:encoded><![CDATA[
+          <h1><img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀"> The emoji to left should be text sized.</h1>
+          <p><img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀"> The emoji to left should be text sized.</p>
+          <p><strong><img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀"> The</strong> emoji to left should be text sized.</p>
+          <table>
+            <tr>
+              <td>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀"> The emoji to left should be text sized.
+              </td>
+              <td>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀"> The emoji to left should be text sized.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀"> The emoji to left should be text sized.
+              </td>
+              <td>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀"> The emoji to left should be text sized.
+              </td>
+            </tr>
+          </table>
+          <p>The below images should be big</p>
+          <p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀" />
+          </p>
+          <p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀" />
+            &nbsp;
+          </p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Empty Paragraphs</title>
+      <link></link>
+      <pubDate></pubDate>
+      <description></description>
+      <guid>empty-p</guid>
+      <content:encoded><![CDATA[
+         <p></p>
+         <p> </p>
+         <p>&nbsp;</p>
+         <p>  </p>
+         <p> &nbsp; </p>
+         <p>This should be the first paragraph</p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Url links</title>
+      <link></link>
+      <pubDate></pubDate>
+      <description></description>
+      <guid>urls</guid>
+      <content:encoded><![CDATA[
+         <p>The below links should not start with <code>http</code> or <code>www</code></p>
+         <ul>
+          <li><a href="http://example.com/">http://example.com/</a></li>
+          <li><a href="http://example.com/">https://example.com/</a></li>
+          <li><a href="http://example.com/">http://www.example.com/</a></li>
+         </ul>
+         <p>Ling urls should break on line ends</p>
+         <a href="http://example.com/">http://example.com/exampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexample</a>
+      ]]></content:encoded>
+    </item>
+  </channel>
+</rss>

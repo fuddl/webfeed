@@ -5,4 +5,7 @@ export default {
     file: 'app/content-combined.js',
     format: 'esm',
   },
+  watch: {
+    include: 'app/**/*.mjs'
+  }
 }

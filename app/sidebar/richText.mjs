@@ -1,6 +1,7 @@
 const heading = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6']
-const block = ['P', 'BLOCKQUOTE', 'FIGURE', 'FIGCAPTION', ...heading]
-const table = ['TABLE', 'THEAD', 'TBODY', 'TR', 'TH', 'TD', 'COLGROUP', 'COL']
+const lists = ['UL', 'OL', 'LI', 'DT', 'DD', 'DL']
+const block = ['P', 'BLOCKQUOTE', 'FIGURE', 'FIGCAPTION', ...heading, ...lists]
+const table = ['TABLE', 'THEAD', 'TBODY', 'TR', 'TH', 'TD', 'COLGROUP', 'COL', 'CAPTION']
 const inline = ['A', 'STRONG', 'EM', 'INS', 'DEL', 'SUP', 'SUB', 'CODE', 'PICTURE', 'SOURCE']
 const selfClosing = ['IMG', 'BR', 'HR']
 const html = [...block, ...inline, ...selfClosing, ...table]
@@ -44,6 +45,57 @@ const textFilter = [
 	}
 ]
 
+const cleanUpSteps = [
+	// scale inline image
+	(dom) => {
+		const images = dom.querySelectorAll('img')
+		for (const image of images) {
+			const closestBlock = image.closest([...block, ...table, 'body'].join(', '))
+			if (closestBlock) {
+				const containsNonWhitespaceTextNodes = Array.from(closestBlock.childNodes).some(node => {
+			    	return node.nodeType === Node.TEXT_NODE && !/^\s+$/.test(node.textContent);
+			 	});
+				if (containsNonWhitespaceTextNodes) {
+					image.classList.add('inline-image')
+				}
+			}
+		}
+		return dom
+	},
+	// remove empty paragraphs
+	(dom) => {
+		const paragraphs = dom.querySelectorAll('p')
+		for (const p of paragraphs) {
+			const isEmtpy = /^\s+$/.test(p.innerText) && p.childNodes.length == 1
+			if (isEmtpy) {
+				p.parentNode.removeChild(p)
+			}
+		}
+		return dom
+	},
+	// shorten urls
+	(dom) => {
+		const links = dom.querySelectorAll('a')
+		for (const a of links) {
+			if (/^(?:https?:\/\/)?(?:[\w]+\.)(?:\.?[\w]{2,})+[^\s]+$/.test(a.innerText)) {
+				a.innerText = a.innerText
+					.replace(/^https?:\/\//, '')
+					.replace(/^www\./, '')
+					.replace(/\/$/, '')
+				a.classList.add('url')
+			}
+		}
+		return dom
+	}
+]
+
+function cleanUpHtml(dom) {
+	for (const step of cleanUpSteps) {
+		dom = step(dom)
+	}
+	return dom
+}
+
 /*
 	for (let filter of textFilter) {
 		if (filter.test.test(content)) {
@@ -85,7 +137,7 @@ const makeRichText = (text) => {
 			output.appendChild(thing)
 		}
 	}
-	return output
+	return cleanUpHtml(output)
 }
 
 export { makeRichText }
