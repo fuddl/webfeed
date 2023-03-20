@@ -8,6 +8,10 @@
     <lastBuildDate></lastBuildDate>
     <docs></docs>
     <ttl></ttl>
+     <image>
+      <url>https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg</url>
+      <title>😀</title>
+    </image>
     <item>
       <title>Inline images</title>
       <link></link>
@@ -71,11 +75,39 @@
          <p>The below links should not start with <code>http</code> or <code>www</code></p>
          <ul>
           <li><a href="http://example.com/">http://example.com/</a></li>
-          <li><a href="http://example.com/">https://example.com/</a></li>
-          <li><a href="http://example.com/">http://www.example.com/</a></li>
+          <li><a href="https://example.com/">https://example.com/</a></li>
+          <li><a href="http://www.example.com/">http://www.example.com/</a></li>
+          <li><a href="http://subdomain.example.com/">http://subdomain.example.com/</a></li>
+          <li><a href="http://subdomain.example.com/folder">http://subdomain.example.com/folder</a></li>
          </ul>
          <p>Ling urls should break on line ends</p>
          <a href="http://example.com/">http://example.com/exampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexampleexample</a>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Empty Paragraphs</title>
+      <link></link>
+      <pubDate></pubDate>
+      <description></description>
+      <guid>empty-p</guid>
+      <content:encoded><![CDATA[
+         <p></p>
+         <p> </p>
+         <p>&nbsp;</p>
+         <p>  </p>
+         <p> &nbsp; </p>
+         <p>This should be the first paragraph</p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Embedded content</title>
+      <link></link>
+      <pubDate></pubDate>
+      <description></description>
+      <guid>urls</guid>
+      <content:encoded><![CDATA[
+        <h2>Youtube</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/06xvXhYrmoM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       ]]></content:encoded>
     </item>
   </channel>

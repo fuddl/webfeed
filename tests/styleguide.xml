@@ -104,5 +104,29 @@
         </dl>
     ]]></content:encoded>
     </item>
+    <item>
+      <title>Quotes</title>
+      <link></link>
+      <pubDate></pubDate>
+      <description></description>
+      <guid></guid>
+      <content:encoded><![CDATA[
+        <p> Aut quod cupiditate <q>amet quidem quidem nihil</q> et corporis. Similique magni qui aliquam nihil.</p>
+        <blockquote>
+          <p>Inventore dolore voluptatum doloremque placeat animi aliquam. Suscipit neque exercitationem laborum voluptas voluptates provident. Veniam nobis inventore consequatur et eum quia. Aut quod cupiditate amet quidem quidem nihil et corporis. Similique magni qui aliquam nihil placeat possimus dolorum. Aut qui quis voluptas quas.</p>
+          <cite>– Aut quod cupiditate</cite>
+        </blockquote>
+    ]]></content:encoded>
+    </item>
+    <item>
+      <title>Misc</title>
+      <link></link>
+      <pubDate></pubDate>
+      <description></description>
+      <guid></guid>
+      <content:encoded><![CDATA[
+        <hr />
+    ]]></content:encoded>
+    </item>
   </channel>
 </rss>

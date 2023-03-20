@@ -5,7 +5,7 @@ const generateHeader = (channel) => {
 		title: channel.querySelector('title')?.textContent,
 		subtitle: channel.querySelector('description, subtitle')?.textContent,
 		image: {
-			url: channel.querySelector('image url')?.textContent,
+			url: channel.querySelector('image > url')?.textContent,
 		}
 	})
 }

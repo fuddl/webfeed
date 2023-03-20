@@ -22,13 +22,20 @@ const header = (vars) => {
 		image.setAttribute('src', vars.image.url)
 		image.classList.add('header__avatar')
 		let poll = setInterval(function () {
-			if (image.naturalWidth) {
+			if (typeof image?.naturalWidth == 'number') {
 				clearInterval(poll);
 				if (image.naturalWidth == image.naturalHeight) {
-					if ((image.naturalWidth / window.devicePixelRatio) >= 45) {
+					const probablyASVG = (image.naturalWidth == 0 && image.naturalHeight == 0)
+					if (probablyASVG || (image.naturalWidth / window.devicePixelRatio) >= 45) {
 						image.setAttribute('width', '45')
 						wrapper.appendChild(image)
 						wrapper.classList.add('header--has-image')
+					}
+					if (probablyASVG || (image.naturalWidth / window.devicePixelRatio) >= 32) {
+						const faviconLink = document.createElement('link')
+						faviconLink.setAttribute('rel', 'shortcut icon')
+						faviconLink.setAttribute('href', image.src)
+						document.head.appendChild(faviconLink)
 					}
 				}
 			}

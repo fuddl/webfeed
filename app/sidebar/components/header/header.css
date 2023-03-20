@@ -11,6 +11,7 @@
 	position: sticky;
 	inset: 0 0 auto 0;
 	background: var(--paper);
+	z-index: 1;
 }
 
 .header__title {

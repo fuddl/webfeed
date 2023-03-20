@@ -2,7 +2,7 @@ const heading = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6']
 const lists = ['UL', 'OL', 'LI', 'DT', 'DD', 'DL']
 const block = ['P', 'BLOCKQUOTE', 'FIGURE', 'FIGCAPTION', ...heading, ...lists]
 const table = ['TABLE', 'THEAD', 'TBODY', 'TR', 'TH', 'TD', 'COLGROUP', 'COL', 'CAPTION']
-const inline = ['A', 'STRONG', 'EM', 'INS', 'DEL', 'SUP', 'SUB', 'CODE', 'PICTURE', 'SOURCE']
+const inline = ['A', 'STRONG', 'EM', 'INS', 'DEL', 'SUP', 'SUB', 'CODE', 'PICTURE', 'SOURCE', 'CITE', 'Q', 'IFRAME']
 const selfClosing = ['IMG', 'BR', 'HR']
 const html = [...block, ...inline, ...selfClosing, ...table]
 
@@ -29,7 +29,12 @@ const attributes = {
 		src: () => true,
 		srcSet: () => true,
 		type: () => true,
-	}
+	},
+	IFRAME: {
+		src: () => true,
+		height: () => true,
+		width: () => true,
+	},
 }
 
 const textFilter = [
@@ -73,6 +78,37 @@ const cleanUpSteps = [
 		}
 		return dom
 	},
+	// sanitise iframes
+	(dom) => {
+		const iframes = dom.querySelectorAll('iframe')
+		for (const frame of iframes) {
+			const dimensions = {
+				height: frame.getAttribute('height'),
+				width: frame.getAttribute('width'),
+			}
+			if (dimensions.height && dimensions.width) {
+				dimensions.ratio = dimensions.height / dimensions.width
+				frame.removeAttribute('height')
+				frame.removeAttribute('width')
+				frame.style.setProperty("--ratio", `1/${dimensions.ratio}`)
+			}
+			frame.setAttribute('loading', 'lazy')
+			frame.setAttribute('hidden', 'hidden')
+			const placeHolder = document.createElement('a')
+			placeHolder.classList.add('iframe-placeholder')
+			placeHolder.style.setProperty("--ratio", `1/${dimensions.ratio}`)
+			placeHolder.setAttribute('href', frame.getAttribute('src'))
+			frame.parentNode.insertBefore(placeHolder, frame)
+			placeHolder.innerText = frame.getAttribute('src')
+			placeHolder.addEventListener('click', (e) => {
+				e.preventDefault()
+				placeHolder.parentNode.removeChild(placeHolder)
+				frame.removeAttribute('hidden')
+			})
+
+		}
+		return dom
+	},
 	// shorten urls
 	(dom) => {
 		const links = dom.querySelectorAll('a')
@@ -86,7 +122,7 @@ const cleanUpSteps = [
 			}
 		}
 		return dom
-	}
+	},
 ]
 
 function cleanUpHtml(dom) {
