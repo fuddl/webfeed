@@ -12,6 +12,7 @@ const nsAliases = {
 	'http://purl.org/rss/1.0/modules/content': 'content',
 	'http://search.yahoo.com/mrss': 'media', 
 	'http://purl.org/dc/elements/1.1': 'dc', 
+	'http://www.itunes.com/dtds/podcast-1.0.dtd': 'itunes',
 }
 
 function getShortNamesspace(node) {
@@ -60,6 +61,10 @@ const types = {
 		processer: 'plain',
 		label: 'Title',
 	},
+	'itunes__subtitle': {
+		processer: 'plain',
+		label: 'Subtitle',
+	},
 	'rss__category': {
 		processer: 'plain',
 		label: 'Category',
@@ -68,6 +73,10 @@ const types = {
 	'atom__link': {
 		processer: 'href',
 		label: 'Link',
+	},
+	'itunes__image': {
+		processer: 'href',
+		label: 'Cover',
 	},
 	'rss__link': {
 		processer: 'url',
@@ -91,6 +100,23 @@ const types = {
 			uri: {
 				processer: 'url',
 				label: 'Author URI',
+			}
+		}
+	},
+	'itunes__explicit': {
+		processer: 'isYes',
+		label: 'Is explicit',
+	},
+	'itunes__owner': {
+		label: 'Owner',
+		properties: {
+			name: {
+				processer: 'plain',
+				label: 'Owner name',
+			},
+			email: {
+				processer: 'url',
+				label: 'Owner email',
 			}
 		}
 	},
@@ -121,9 +147,17 @@ const types = {
 			},
 		}
 	},
+	'rss__enclosure': {
+		processer: 'url+type',
+		label: 'Enclosure',
+	},
 	'dc__creator': {
 		processer: 'plain',
 		label: 'Creator',
+	},
+	'itunes__author': {
+		processer: 'plain',
+		label: 'Author',
 	}
 }
 
@@ -172,6 +206,8 @@ const getData = (element, type, parent = null) => {
 					url: element.getAttribute('url'),
 					type: element.getAttribute('type'),
 				}
+			case 'isYes':
+				return element.textContent === 'yes'
 		}
 	} else {
 		const output = {}
@@ -206,11 +242,16 @@ const generateItem = (item) => {
 	}	
 
 
-	//console.debug(data)
-
-	// if (data?.audios?.length > 0) {
-	// 	return podcastPlayer(data)
-	// }
+	if (data?.rss__enclosure?.type?.startsWith('audio/')) {
+		return podcastPlayer({
+			title: data.rss__title || data?.atom__title,
+			date: data?.rss__pubDate,
+			cover: data?.itunes__image,
+			audio: data.rss__enclosure,
+			content: data?.content__encoded || data?.rss__description || data?.atom__summary || data?.atom__content,
+			explicit: data?.itunes__explicit,
+		})
+	}
 
 	if ((data?.rss__title || data?.atom__title) && (data?.rss__description || data?.atom__summary || data?.atom__content || data?.content__encoded)) {
 		return article({

@@ -7,7 +7,6 @@
 	grid-template-rows: auto auto;
 	grid-template-areas: 'title' 'subtitle';
 	grid-gap: .5em;
-	line-height: 1;
 	position: sticky;
 	inset: 0 0 auto 0;
 	background: var(--paper);

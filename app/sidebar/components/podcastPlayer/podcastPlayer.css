@@ -28,3 +28,12 @@
 .podcast-player__title {
 	margin-top: 0;
 }
+
+.podcast-player__explicit-tag {
+	border: 1px solid;
+	font-size: .7em;
+	color: red;
+	padding: .15em .45em;
+	border-radius: 6px;
+	margin: 0 .3em;
+}
