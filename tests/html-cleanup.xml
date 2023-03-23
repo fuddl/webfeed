@@ -13,6 +13,25 @@
       <title>😀</title>
     </image>
     <item>
+      <title>Fix multiple consecutive line breaks</title>
+      <link></link>
+      <pubDate></pubDate>
+      <description></description>
+      <guid>urls</guid>
+      <content:encoded><![CDATA[
+        <p>Foo<br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        Bar</p>
+        Foo<br /><br /><br /><br /><br /><br />Bar
+        <p>Foo<br /><br />Bar</p>
+        Foo<br /><br />Bar
+      ]]></content:encoded>
+    </item>
+    <item>
       <title>Inline images</title>
       <link></link>
       <pubDate></pubDate>

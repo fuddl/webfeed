@@ -15,6 +15,13 @@ const article = (vars) => {
 	title.appendChild(titleLink)
 	wrapper.appendChild(title)
 
+	if (vars.creator) {
+		const creator = document.createElement('p')
+		creator.classList.add('article__creator')
+		creator.innerText = vars.creator
+		wrapper.appendChild(creator)
+	}
+
 	if (vars.contributors) {
 		const contributors = document.createElement('p')
 		contributors.classList.add('article__contributors')

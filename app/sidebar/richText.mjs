@@ -123,6 +123,28 @@ const cleanUpSteps = [
 		}
 		return dom
 	},
+	// doubble <br> to p
+	(dom) => {
+		const multiBreaks = dom.querySelectorAll('br + br + br')
+		for (const multiBreak of multiBreaks) {
+			if (!multiBreak?.parentNode?.childNodes) {
+				continue
+			}
+			let pastBrs = 0
+			for (const sibling of multiBreak.parentNode.childNodes) {
+				pastBrs = sibling?.nodeName === "BR" ?
+					pastBrs + 1 :
+					sibling?.nodeName === '#text' && sibling?.nodeValue?.match(/^\s+$/) ? 
+						pastBrs :
+						0
+				if (pastBrs > 2) {
+					sibling?.parentNode.removeChild(sibling)
+				}
+			}
+		}
+
+		return dom
+	}
 ]
 
 function cleanUpHtml(dom) {

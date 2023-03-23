@@ -9,6 +9,8 @@ const nsAliases = {
 	'http://www.sitemaps.org/schemas/sitemap/0.9': 'sitemap',
 	'http://purl.org/atompub/rank/1.0': 'rank',
 	'http://purl.org/rss/1.0/modules/content': 'content',
+	'http://search.yahoo.com/mrss': 'media', 
+	'http://purl.org/dc/elements/1.1': 'dc', 
 }
 
 function getShortNamesspace(node) {
@@ -106,6 +108,21 @@ const types = {
 	'content__encoded': {
 		processer: 'rich', 
 		label: 'Content',
+	},
+	'media__content': {
+		processer: 'url+type',
+		label: 'Media',
+		multiple: true,
+		properties: {
+			description: {
+				processer: 'plain',
+				label: 'Media Description',
+			},
+		}
+	},
+	'dc__creator': {
+		processer: 'plain',
+		label: 'Creator',
 	}
 }
 
@@ -149,6 +166,11 @@ const getData = (element, type, parent = null) => {
 				return parseFloat(element.textContent)
 			case 'int':
 				return parseInt(element.textContent)
+			case 'url+type':
+				return {
+					url: element.getAttribute('url'),
+					type: element.getAttribute('type'),
+				}
 		}
 	} else {
 		const output = {}
@@ -194,12 +216,18 @@ const generateItem = (item) => {
 			title: data.rss__title || data?.atom__title,
 			description: data?.content__encoded || data?.rss__description || data?.atom__summary || data?.atom__content,
 			tags: data?.rss__category,
+			creator: data?.dc__creator,
 		})
 	}
 
-	// if (data?.description) {
-	// 	return status(data)
-	// }
+
+	if (data?.rss__description && data?.rss__pubDate) {
+		return status({
+			date: data.rss__pubDate,
+			description: data.rss__description,
+			images: data?.media__content,
+		})
+	}
 
 	return definitionList(data, types)
 }

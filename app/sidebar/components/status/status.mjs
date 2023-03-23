@@ -14,22 +14,26 @@ const status = (vars) => {
 	wrapper.appendChild(vars.description)
 
 
-	if (vars.image) {
-		const image = document.createElement('img')
-		image.setAttribute('src', vars.image)
-		wrapper.appendChild(image)
+	if (vars.images) {
+		const gallery = document.createElement('div')
+		wrapper.appendChild(gallery)
+		for (let item of vars.images) {
+			const image = document.createElement('img')
+			image.setAttribute('src', item.url)
+			gallery.appendChild(image)
 
-		let poll = setInterval(function () {
-			if (image.naturalWidth) {
-				clearInterval(poll);
-				if ((image.naturalWidth / window.devicePixelRatio) >= window.innerWidth) {
-					const imageWrapper = document.createElement('div')
-					imageWrapper.classList.add('status__wide-image')
-					wrapper.appendChild(imageWrapper)
-					imageWrapper.appendChild(image)
+			let poll = setInterval(function () {
+				if (image.naturalWidth) {
+					clearInterval(poll);
+					if ((image.naturalWidth / window.devicePixelRatio) >= window.innerWidth) {
+						const imageWrapper = document.createElement('div')
+						imageWrapper.classList.add('status__wide-image')
+						wrapper.appendChild(imageWrapper)
+						imageWrapper.appendChild(image)
+					}
 				}
-			}
-		}, 10);
+			}, 10);
+		}
 	}
 	return wrapper
 }
