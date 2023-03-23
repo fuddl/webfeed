@@ -1,0 +1,51 @@
+:root {
+  font-family: Helvetica neue, Arial, sans-serif;
+  font:       300 17px/1.4 Helvetica neue, sans-serif;
+  --big:      200 1.545rem Helvetica neue, sans-serif;
+  --bigger:   100 2.941rem Helvetica neue, sans-serif;
+  --heavy:    400  .735rem Helvetica neue, sans-serif;
+  --heavier:  500  .541rem Helvetica neue, sans-serif;
+  --heaviest: 600  .447rem Helvetica neue, sans-serif;
+}
+
+h1 {
+  font: var(--bigger);
+  margin: 1rem 0;
+}
+
+h2 {
+  font: var(--big);
+  margin: 1rem 0;
+}
+
+h3 {
+  font: inherit;
+  margin: 1rem 0;
+}
+
+h4 {
+  font: var(--heavy);
+  margin: 1rem 0;
+}
+
+h5 {
+  font: var(--heavier);
+  margin: 1rem 0;
+}
+
+h6 {
+  font: var(--heaviest);
+  margin: 1rem 0;
+}
+
+blockquote {
+  font: var(--big);
+  font-style: italic;
+}
+
+strong,
+b,
+th,
+caption {
+  font-weight: bolder;
+}

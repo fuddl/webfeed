@@ -30,6 +30,16 @@
     ]]></content:encoded>
     </item>
     <item>
+      <title>Inline</title>
+      <link>https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements</link>
+      <pubDate></pubDate>
+      <description>Headline Elements</description>
+      <guid>headlines</guid>
+      <content:encoded><![CDATA[
+        <p>Inventore <strong>dolore</strong> voluptatum <em>doloremque</em> placeat animi aliquam. Suscipit neque exercitationem laborum voluptas voluptates provident. Veniam nobis inventore consequatur et eum quia. Aut quod cupiditate amet quidem quidem nihil et corporis. Similique magni qui aliquam nihil placeat possimus dolorum. Aut qui quis voluptas quas.</p>
+    ]]></content:encoded>
+    </item>
+    <item>
       <title>Tables</title>
       <link>https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements</link>
       <pubDate></pubDate>

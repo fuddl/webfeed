@@ -34,6 +34,7 @@ chrome.runtime.sendMessage({
         const dom = new window.DOMParser().parseFromString(pre.innerText, "text/xml")
         pre.parentNode.removeChild(pre)
         requreStylesheet('sidebar/base.css')
+        requreStylesheet('sidebar/base--thin.css')
         displayFeed(dom)
     } catch (e) {
         console.error(e);
