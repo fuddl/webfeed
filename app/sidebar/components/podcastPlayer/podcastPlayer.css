@@ -1,4 +1,30 @@
+.podcast-player {
+	display: grid;
+	grid-template-rows: auto auto;
+	grid-gap: 2rem;
+	margin: 4rem 0;
+	grid-template-areas: 'text' 'player';
+}
+
+.podcast-player--has-cover {
+	grid-template-columns: 200px 1fr;
+	grid-template-areas: 'cover text' 'player player';
+}
+
 .podcast-player__player {
 	display: block;
 	width: 100%;
+}
+
+.podcast-player__cover {
+	grid-area: cover;
+}
+
+.podcast-player__player {
+	grid-area: player;
+	height: 40px;
+}
+
+.podcast-player__title {
+	margin-top: 0;
 }

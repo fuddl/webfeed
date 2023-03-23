@@ -198,4 +198,16 @@ const makeRichText = (text) => {
 	return cleanUpHtml(output)
 }
 
-export { makeRichText }
+const nl2p = (plainText) => {
+	const output = new DocumentFragment
+	plainText
+		.split("\n")
+		.map((line) => {
+			const newParagraph = document.createElement("p")
+			newParagraph.innerText = line
+			output.appendChild(newParagraph)
+		})
+	return output
+}
+
+export { makeRichText, nl2p }

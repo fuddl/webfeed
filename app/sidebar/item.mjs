@@ -1,8 +1,9 @@
 import { status } from './components/status/status.mjs'
 import { article } from './components/article/article.mjs'
 import { definitionList } from './components/definitionList/definitionList.mjs'
+import { nexus } from './components/nexus/nexus.mjs'
 import { podcastPlayer } from './components/podcastPlayer/podcastPlayer.mjs'
-import { makeRichText } from './richText.mjs'
+import { makeRichText, nl2p } from './richText.mjs'
 
 const nsAliases = {
 	'http://www.w3.org/2005/Atom': 'atom',

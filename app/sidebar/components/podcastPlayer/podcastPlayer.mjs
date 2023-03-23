@@ -6,6 +6,19 @@ const podcastPlayer = (vars) => {
 
 	const wrapper = document.createElement('section')
 	wrapper.classList.add('podcast-player')
+	const textWrapper = document.createElement('div')
+	wrapper.appendChild(textWrapper)
+
+	if (vars?.itunesImages) {
+		for (itunesImage of vars.itunesImages) {
+			const image = document.createElement('img')
+			image.setAttribute('src', itunesImage.href)
+			image.setAttribute('loading', 'lazy')
+			image.classList.add('podcast-player__cover')
+			wrapper.classList.add('podcast-player--has-cover')
+			wrapper.appendChild(image)
+		}
+	}
 
 	const title = document.createElement('h2')
 	const titleLink = document.createElement('a')
@@ -13,7 +26,13 @@ const podcastPlayer = (vars) => {
 	titleLink.innerText = vars.title
 	title.classList.add('podcast-player__title')
 	title.appendChild(titleLink)
-	wrapper.appendChild(title)
+	textWrapper.appendChild(title)
+
+	const date = document.createElement('div')
+	date.classList.add('podcast__date')
+	date.innerText = vars.date.toLocaleString(navigator.language)
+	textWrapper.appendChild(date)
+
 
 	for (const audio of vars.audios) {
 		if (audio?.type && audio?.url) {
@@ -26,30 +45,14 @@ const podcastPlayer = (vars) => {
 		}
 	}
 
-	if (vars.image) {
-		const image = document.createElement('img')
-		image.setAttribute('src', vars.image)
-		wrapper.appendChild(image)
-	}
-
-	if (vars?.content) {
-		wrapper.appendChild(vars.content)
+	if (vars?.iTunesSummary) {
+		textWrapper.appendChild(vars.iTunesSummary)
+	} else if (vars?.content) {
+		textWrapper.appendChild(vars.content)
 	} else if (vars?.description) {
-		wrapper.appendChild(vars.description)
+		textWrapper.appendChild(vars.description)
 	}
 	
-	if (vars?.tags?.length > 0) {
-		const tagWrapper = document.createElement('p')
-		for (tag of vars.tags) {
-			const tagElement = document.createElement('span')
-			tagElement.classList.add('podcast-player__tag')
-			tagElement.innerText = tag
-			tagWrapper.appendChild(tagElement)
-			tagWrapper.appendChild(document.createTextNode(' '))
-		}
-		wrapper.appendChild(tagWrapper)
-	}
-
 	return wrapper
 }
 

@@ -6,13 +6,16 @@ const status = (vars) => {
 
 	const wrapper = document.createElement('section')
 	wrapper.classList.add('status')
-	const date = document.createElement('time')
-	date.classList.add('status__date')
-	date.innerText = vars.date.toLocaleString(navigator.language)
-	wrapper.appendChild(date)
+	if (vars?.date) {
+		const date = document.createElement('time')
+		date.classList.add('status__date')
+		date.innerText = vars.date.toLocaleString(navigator.language)
+		wrapper.appendChild(date)
+	}
 
-	wrapper.appendChild(vars.description)
-
+	if (vars?.description) {
+		wrapper.appendChild(vars.description)
+	}
 
 	if (vars.images) {
 		const gallery = document.createElement('div')

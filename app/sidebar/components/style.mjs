@@ -6,6 +6,7 @@ const requreStylesheet = (path) => {
 			exists = true
 		}
 	}
+	
 	if (!exists) {
 		let link = document.createElement('link')
 		link.setAttribute('rel', "stylesheet")
