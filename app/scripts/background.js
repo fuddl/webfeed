@@ -10,7 +10,7 @@ browser.runtime.onMessage.addListener(async (data, sender) => {
     
     await browser.pageAction.setPopup({
         tabId: sender.tab.id,
-        popup: browser.runtime.getURL('pages/popup.html') + `?${JSON.stringify(data.feeds)}`,
+        popup: browser.runtime.getURL('pages/popup.html') + `?${encodeURIComponent(JSON.stringify(data.feeds))}`,
     })      
     // browser.pageAction.onClicked.addListener(async () => {
     //   await browser.sidebarAction.toggle()

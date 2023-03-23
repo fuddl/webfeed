@@ -24,7 +24,8 @@ for (const lang of Object.keys(feedsByLang)) {
 		listItem.classList.add('panel-list-item')
 		const itemText = document.createElement('div')
 		itemText.classList.add('text')
-		itemText.innerText = feed?.title ?? feed.href
+		let title = (feed?.title ?? feed.href).trim()
+		itemText.innerText = title.length > 62 ? `${title.substring(0, 62).trim()}…` : title
 		
 		listItem.appendChild(itemText)
 		target.appendChild(listItem)
