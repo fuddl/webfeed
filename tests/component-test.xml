@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <title>Component test</title>
+    <description>Tests for individual layout components</description>
+    <language>en</language>
+     <image>
+      <url>https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg</url>
+      <title>😀</title>
+    </image>
+    <item>
+      <title>Article</title>
+      <guid>article</guid>
+      <description><![CDATA[
+        <p>Inventore dolore voluptatum doloremque placeat animi aliquam. Suscipit neque exercitationem laborum voluptas voluptates provident. Veniam nobis inventore consequatur et eum quia. Aut quod cupiditate amet quidem quidem nihil et corporis. Similique magni qui aliquam nihil placeat possimus dolorum. Aut qui quis voluptas quas.</p>
+      ]]></description>
+    </item>
+    <item>
+      <guid>status</guid>
+      <pubDate>Fri, 24 Mar 2023 15:24:32 +0100</pubDate>
+      <description><![CDATA[
+        <p>Status update test.</p>
+      ]]></description>
+    </item>
+    <item>
+      <guid>podcast</guid>
+      <title>Podcast issue test</title>
+      <pubDate>Fri, 24 Mar 2023 15:24:32 +0100</pubDate>
+      <description><![CDATA[
+         <p>Inventore dolore voluptatum doloremque placeat animi aliquam. Suscipit neque exercitationem laborum voluptas voluptates provident. Veniam nobis inventore consequatur et eum quia. Aut quod cupiditate amet quidem quidem nihil et corporis. Similique magni qui aliquam nihil placeat possimus dolorum. Aut qui quis voluptas quas.</p>
+      ]]></description>
+      <enclosure length="33722158" type="audio/mpeg" url="https://traffic.libsyn.com/secure/missionlog/485_-_Warlord.mp3?dest-id=108569" />
+    </item>
+    <item>
+      <guid>status-media</guid>
+      <pubDate>Fri, 24 Mar 2023 15:24:32 +0100</pubDate>
+      <description><![CDATA[
+        <p>Status update with media test.</p>
+      ]]></description>
+      <media:content url="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/M%C3%BCnster%2C_LBS_--_2021_--_9804.jpg/1024px-M%C3%BCnster%2C_LBS_--_2021_--_9804.jpg" type="image/jpeg" fileSize="133271" medium="image">
+        <media:rating scheme="urn:simple">nonadult</media:rating>
+      </media:content>
+    </item>
+    <item>
+      <guid>podcast-cover</guid>
+      <title>Podcast issue with cover test</title>
+      <pubDate>Fri, 24 Mar 2023 15:24:32 +0100</pubDate>
+      <itunes:image href="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/222278785_-_Flickr_-_jared.jpg/1024px-222278785_-_Flickr_-_jared.jpg" />
+      <description><![CDATA[
+         <p>Inventore dolore voluptatum doloremque placeat animi aliquam. Suscipit neque exercitationem laborum voluptas voluptates provident. Veniam nobis inventore consequatur et eum quia. Aut quod cupiditate amet quidem quidem nihil et corporis. Similique magni qui aliquam nihil placeat possimus dolorum. Aut qui quis voluptas quas.</p>
+      ]]></description>
+      <enclosure length="33722158" type="audio/mpeg" url="https://traffic.libsyn.com/secure/missionlog/485_-_Warlord.mp3?dest-id=108569" />
+    </item>
+  </channel>
+</rss>

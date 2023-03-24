@@ -3,6 +3,8 @@
 	--ink: black;
 	--toolbar-border: rgba(12, 12, 13, 0.2);
 	--toolbar-box-shadow: rgba(12, 12, 13, 0.1);
+
+	--layout-width: 48em;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,7 +18,6 @@ body {
 	background: var(--paper);
 	color: var(--ink);
 	user-select: text;
-	max-width: 48em;
 	margin: auto;
 }
 

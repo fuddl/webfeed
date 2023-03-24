@@ -65,10 +65,22 @@ const types = {
 		processer: 'plain',
 		label: 'Subtitle',
 	},
+	'itunes__title': {
+		processer: 'plain',
+		label: 'Title',
+	},
+	'itunes__episode': {
+		processer: 'int',
+		label: 'Episode №',
+	},
 	'rss__category': {
 		processer: 'plain',
 		label: 'Category',
 		multiple: true,
+	},
+	'itunes__keywords': {
+		processer: 'csv',
+		label: 'Keywords',
 	},
 	'atom__link': {
 		processer: 'href',
@@ -220,6 +232,8 @@ const getData = (element, type, parent = null) => {
 				}
 			case 'isYes':
 				return element.textContent === 'yes'
+			case 'csv':
+				return element.textContent ? element.textContent.split(',') : null
 		}
 	} else {
 		const output = {}
@@ -253,11 +267,12 @@ const generateItem = (item) => {
 		}
 	}	
 
-
 	if (data?.rss__enclosure?.type?.startsWith('audio/')) {
 		return podcastPlayer({
-			title: data.rss__title || data?.atom__title,
+			no: data?.itunes__episode,
+			title: data.itunes__title || data.rss__title || data?.atom__title,
 			date: data?.rss__pubDate,
+			tags: data?.itunes__keywords || data?.rss__category,
 			cover: data?.itunes__image,
 			audio: data.rss__enclosure,
 			content: data?.content__encoded || data?.rss__description || data?.atom__summary || data?.atom__content,
@@ -269,7 +284,7 @@ const generateItem = (item) => {
 		return article({
 			title: data.rss__title || data?.atom__title,
 			description: data?.content__encoded || data?.rss__description || data?.atom__summary || data?.atom__content,
-			tags: data?.rss__category,
+			tags: data?.rss__category || data?.itunes__keywords,
 			creator: data?.dc__creator,
 		})
 	}

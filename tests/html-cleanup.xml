@@ -5,18 +5,12 @@
     <link>http://example.com/</link>
     <description>Tests for HTML cleanup</description>
     <language>en</language>
-    <lastBuildDate></lastBuildDate>
-    <docs></docs>
-    <ttl></ttl>
      <image>
       <url>https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg</url>
       <title>😀</title>
     </image>
     <item>
       <title>Fix multiple consecutive line breaks</title>
-      <link></link>
-      <pubDate></pubDate>
-      <description></description>
       <guid>urls</guid>
       <content:encoded><![CDATA[
         <p>Foo<br />
@@ -33,9 +27,6 @@
     </item>
     <item>
       <title>Inline images</title>
-      <link></link>
-      <pubDate></pubDate>
-      <description></description>
       <guid>headlines</guid>
       <content:encoded><![CDATA[
           <h1><img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀"> The emoji to left should be text sized.</h1>
@@ -71,9 +62,6 @@
     </item>
     <item>
       <title>Empty Paragraphs</title>
-      <link></link>
-      <pubDate></pubDate>
-      <description></description>
       <guid>empty-p</guid>
       <content:encoded><![CDATA[
          <p></p>
@@ -85,10 +73,6 @@
       ]]></content:encoded>
     </item>
     <item>
-      <title>Url links</title>
-      <link></link>
-      <pubDate></pubDate>
-      <description></description>
       <guid>urls</guid>
       <content:encoded><![CDATA[
          <p>The below links should not start with <code>http</code> or <code>www</code></p>
@@ -105,9 +89,6 @@
     </item>
     <item>
       <title>Empty Paragraphs</title>
-      <link></link>
-      <pubDate></pubDate>
-      <description></description>
       <guid>empty-p</guid>
       <content:encoded><![CDATA[
          <p></p>

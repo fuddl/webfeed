@@ -33,7 +33,7 @@ const enrichSteps = [
 		const feedTitle = dom.querySelector(':root > title, channel > title')
 		const subtitle = dom.querySelector(':root > description, :root > subtitle')?.textContent
 		if (!subtitle && feedTitle.textContent) {
-			const dividerExpression = /^(.+\D)\s+[\|\--–—―‒⸺]\s+(\D.+)$$/
+			const dividerExpression = /^(.+\D)(?:\s+[\|\-–—―‒⸺]|\:)\s+(\D.+)$/
 			if (dividerExpression.test(feedTitle.textContent)) {
 				const parts = feedTitle.textContent.match(dividerExpression)
 				feedTitle.textContent = parts[1]

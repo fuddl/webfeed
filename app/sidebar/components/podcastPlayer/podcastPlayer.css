@@ -3,12 +3,20 @@
 	grid-template-rows: auto auto;
 	grid-gap: 2rem;
 	margin: 4rem 0;
-	grid-template-areas: 'text' 'player';
+	--cover-width: 200px;
+	grid-template-columns: auto var(--layout-width) auto;
+	grid-template-areas: '. text   .'
+	                     '. player .';
 }
 
 .podcast-player--has-cover {
-	grid-template-columns: 200px 1fr;
-	grid-template-areas: 'cover text' 'player player';
+	grid-template-columns: auto var(--cover-width) calc(var(--layout-width) - var(--cover-width)) auto;
+	grid-template-areas: '. cover  text   .'
+											 '. player player .';
+}
+
+.podcast-player__text {
+	grid-area: text;
 }
 
 .podcast-player__player {
@@ -27,6 +35,14 @@
 
 .podcast-player__title {
 	margin-top: 0;
+}
+
+.podcast-player__tag {
+	display: inline-block;
+	background: var(--toolbar-border);
+	font-size: .75rem;
+	padding: 0 .3em;
+	border-radius: .2rem;
 }
 
 .podcast-player__explicit-tag {

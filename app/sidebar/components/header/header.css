@@ -2,15 +2,19 @@
 	border-bottom: 1px solid var(--toolbar-border);
 	box-shadow: 0 2px 8px var(--toolbar-box-shadow);
 
-	padding: 1em;
+	padding: 2em;
 	display: grid;
 	grid-template-rows: auto auto;
-	grid-template-areas: 'title' 'subtitle';
-	grid-gap: .5em;
+	grid-template-columns: auto var(--layout-width) auto;
+	grid-template-areas: '. title .' '. subtitle .';
+	grid-gap: 0 2em;
 	position: sticky;
 	inset: 0 0 auto 0;
 	background: var(--paper);
 	z-index: 1;
+	--feed-logo-width: 100px;
+	background: black;
+	color: white;
 }
 
 .header__title {
@@ -26,12 +30,13 @@
 
 .header__avatar {
 	grid-area: avatar;
-	border: 1px solid;
 	margin: auto;
+	width: var(--feed-logo-width);
+	aspect-ratio: 1/1;
 }
 
 .header--has-image {
-	grid-template-columns: 45px 1fr;
-	grid-template-areas: 'avatar title'
-						 'avatar subtitle';
+	grid-template-columns: auto var(--feed-logo-width) calc(var(--layout-width) - var(--feed-logo-width)) auto;
+	grid-template-areas: '. avatar title    .'
+						           '. avatar subtitle .';
 }

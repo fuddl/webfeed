@@ -3,7 +3,7 @@ import { requreStylesheet } from './../style.mjs'
 const header = (vars) => {
 	requreStylesheet('sidebar/components/header/header.css')
 
-	const wrapper = document.createElement('div')
+	const wrapper = document.createElement('header')
 	wrapper.classList.add('header')
 	if (vars?.title) {
 		const title = document.createElement('h1')
