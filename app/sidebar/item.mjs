@@ -100,6 +100,10 @@ const types = {
 			uri: {
 				processer: 'url',
 				label: 'Author URI',
+			},
+			email: {
+				processer: 'email',
+				label: 'Author Email',
 			}
 		}
 	},
@@ -191,6 +195,14 @@ const getData = (element, type, parent = null) => {
 			case 'url':
 				try {
 					value = new URL(element.textContent)
+				} catch (e) {
+					return false
+				}
+				return value
+				return value
+			case 'email':
+				try {
+					value = new URL(`mailto:${element.textContent}`)
 				} catch (e) {
 					return false
 				}

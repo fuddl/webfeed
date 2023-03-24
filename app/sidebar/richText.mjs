@@ -2,7 +2,7 @@ const heading = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6']
 const lists = ['UL', 'OL', 'LI', 'DT', 'DD', 'DL']
 const block = ['P', 'BLOCKQUOTE', 'FIGURE', 'FIGCAPTION', ...heading, ...lists]
 const table = ['TABLE', 'THEAD', 'TBODY', 'TR', 'TH', 'TD', 'COLGROUP', 'COL', 'CAPTION']
-const inline = ['A', 'STRONG', 'EM', 'INS', 'DEL', 'SUP', 'SUB', 'CODE', 'PICTURE', 'SOURCE', 'CITE', 'Q', 'IFRAME']
+const inline = ['A', 'STRONG', 'EM', 'INS', 'DEL', 'SUP', 'SUB', 'CODE', 'PICTURE', 'SOURCE', 'CITE', 'Q', 'IFRAME', 'I']
 const selfClosing = ['IMG', 'BR', 'HR']
 const html = [...block, ...inline, ...selfClosing, ...table]
 

@@ -10,6 +10,10 @@ const header = (vars) => {
 		title.classList.add('header__title')
 		title.innerText = vars.title
 		wrapper.appendChild(title)
+
+		const docTitle = document.createElement('title')
+		docTitle.innerText = vars.title
+		document.head.appendChild(docTitle)
 	}
 	if (vars?.subtitle) {
 		const subtitle = document.createElement('p')

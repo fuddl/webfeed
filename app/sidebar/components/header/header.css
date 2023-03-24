@@ -21,6 +21,7 @@
 .header__subtitle {
 	grid-area: subtitle;
 	margin: auto 0 0;
+	font: var(--big);
 }
 
 .header__avatar {
