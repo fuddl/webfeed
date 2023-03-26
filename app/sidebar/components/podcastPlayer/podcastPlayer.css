@@ -2,17 +2,27 @@
 	display: grid;
 	grid-template-rows: auto auto;
 	grid-gap: 2rem;
-	margin: 4rem 0;
+	margin: 4rem auto;
+	padding: 0 4rem;
 	--cover-width: 200px;
-	grid-template-columns: auto var(--layout-width) auto;
-	grid-template-areas: '. text   .'
-	                     '. player .';
+	grid-template-columns: 1fr;
+	grid-template-areas: 'text'
+	                     'player';
+	max-width: var(--layout-width);
 }
 
 .podcast-player--has-cover {
-	grid-template-columns: auto var(--cover-width) calc(var(--layout-width) - var(--cover-width)) auto;
-	grid-template-areas: '. cover  text   .'
-											 '. player player .';
+		grid-template-areas: 'cover'
+							 'text'
+							 'player';
+	}
+
+@media (min-width: 800px) {
+	.podcast-player--has-cover {
+		grid-template-columns: var(--cover-width) 1fr;
+		grid-template-areas: 'cover  text'
+							 'player player';
+	}
 }
 
 .podcast-player__text {

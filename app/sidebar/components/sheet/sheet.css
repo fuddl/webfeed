@@ -1,0 +1,5 @@
+.sheet {
+	margin: 4rem auto;
+	padding: 0 4rem;
+	max-width: var(--layout-width);
+}

@@ -1,5 +1,10 @@
-const definitionList = (data, types) => {
+import { requreStylesheet } from './../style.mjs'
+
+
+const sheet = (data, types) => {
+  requreStylesheet('sidebar/components/sheet/sheet.css')
   const wrapper = document.createElement('dl')
+  wrapper.classList.add('sheet')
   
   const keyValue = (key, value, subtypes) => {
     const output = new DocumentFragment
@@ -50,4 +55,4 @@ const definitionList = (data, types) => {
   return wrapper
 }
 
-export { definitionList }
+export { sheet }

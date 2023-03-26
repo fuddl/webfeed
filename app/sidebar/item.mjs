@@ -1,6 +1,6 @@
 import { status } from './components/status/status.mjs'
 import { article } from './components/article/article.mjs'
-import { definitionList } from './components/definitionList/definitionList.mjs'
+import { sheet } from './components/sheet/sheet.mjs'
 import { nexus } from './components/nexus/nexus.mjs'
 import { podcastPlayer } from './components/podcastPlayer/podcastPlayer.mjs'
 import { makeRichText, nl2p } from './richText.mjs'
@@ -298,7 +298,7 @@ const generateItem = (item) => {
 		})
 	}
 
-	return definitionList(data, types)
+	return sheet(data, types)
 }
 
 

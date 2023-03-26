@@ -2,10 +2,10 @@ import { header } from './components/header/header.mjs'
 
 const generateHeader = (channel) => {
 	return header({
-		title: channel.querySelector('title')?.textContent,
-		subtitle: channel.querySelector('description, subtitle')?.textContent,
+		title: channel.querySelector(':scope > title')?.textContent,
+		subtitle: channel.querySelector(':scope > description, :scope > subtitle')?.textContent,
 		image: {
-			url: channel.querySelector('image > url')?.textContent,
+			url: channel.querySelector(':scope > image > url')?.textContent,
 		}
 	})
 }
