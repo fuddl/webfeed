@@ -1,0 +1,13 @@
+.gallery {
+	--gap: 1rem;
+	margin-top: var(--gap);
+}
+.gallery img {
+	vertical-align: bottom;
+}
+
+.gallery div {
+	display: flex;
+	justify-content: space-between;
+	margin-top: var(--gap);
+}

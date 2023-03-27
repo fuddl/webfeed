@@ -1,5 +1,5 @@
 import { requreStylesheet } from './../style.mjs'
-
+import { gallery } from './../gallery/gallery.mjs'
 
 const status = (vars) => {
 	requreStylesheet('sidebar/components/status/status.css')
@@ -17,26 +17,15 @@ const status = (vars) => {
 		wrapper.appendChild(vars.description)
 	}
 
-	if (vars.images) {
-		const gallery = document.createElement('div')
-		wrapper.appendChild(gallery)
-		for (let item of vars.images) {
-			const image = document.createElement('img')
-			image.setAttribute('src', item.url)
-			gallery.appendChild(image)
-
-			let poll = setInterval(function () {
-				if (image.naturalWidth) {
-					clearInterval(poll);
-					if ((image.naturalWidth / window.devicePixelRatio) >= window.innerWidth) {
-						const imageWrapper = document.createElement('div')
-						imageWrapper.classList.add('status__wide-image')
-						wrapper.appendChild(imageWrapper)
-						imageWrapper.appendChild(image)
-					}
-				}
-			}, 10);
-		}
+	if (vars?.images?.length === 1) {
+		const imageWrapper = document.createElement('div')
+		const image = document.createElement('img')
+		image.setAttribute('src', vars.images[0].url)
+		image.setAttribute('alt', vars.images[0].media__description)
+		imageWrapper.appendChild(image)
+		wrapper.appendChild(imageWrapper)
+	} else if(vars?.images?.length > 1) {
+		wrapper.appendChild(gallery({ images: vars.images }))
 	}
 	return wrapper
 }

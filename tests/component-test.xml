@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"  xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Component test</title>
     <description>Tests for individual layout components</description>
@@ -9,8 +9,54 @@
       <title>😀</title>
     </image>
     <item>
+      <guid>status-media</guid>
+      <pubDate>Fri, 24 Mar 2023 15:24:32 +0100</pubDate>
+      <description><![CDATA[
+        <p>Status update with media test.</p>
+      ]]></description>
+      <media:content url="/res/lorem.svg" type="image/svg" fileSize="133271" medium="image">
+        <media:rating scheme="urn:simple">nonadult</media:rating>
+        <media:description type="plain">Lorem</media:description>
+      </media:content>
+      <media:content url="/res/ipsum.svg" type="image/svg" fileSize="133271" medium="image">
+        <media:rating scheme="urn:simple">nonadult</media:rating>
+        <media:description type="plain">Ipsum</media:description>
+      </media:content>
+      <media:content url="/res/dolor.svg" type="image/svg" fileSize="133271" medium="image">
+        <media:rating scheme="urn:simple">nonadult</media:rating>
+        <media:description type="plain">Dolor</media:description>
+      </media:content>
+      <media:content url="/res/sit.svg" type="image/svg" fileSize="133271" medium="image">
+        <media:rating scheme="urn:simple">nonadult</media:rating>
+        <media:description type="plain">Sit</media:description>
+      </media:content>
+    </item>
+    <item>
+      <guid>status-media</guid>
+      <pubDate>Fri, 24 Mar 2023 15:24:32 +0100</pubDate>
+      <description><![CDATA[
+        <p>Status update with media test.</p>
+      ]]></description>
+      <media:content url="/res/dolor.svg" type="image/jpeg" fileSize="133271" medium="image">
+        <media:rating scheme="urn:simple">nonadult</media:rating>
+        <media:description type="plain">Sit</media:description>
+      </media:content>
+      <media:content url="/res/sit.svg" type="image/jpeg" fileSize="133271" medium="image">
+        <media:rating scheme="urn:simple">nonadult</media:rating>
+        <media:description type="plain">Sit</media:description>
+      </media:content>
+      <media:content url="/res/sit.svg" type="image/jpeg" fileSize="133271" medium="image">
+        <media:rating scheme="urn:simple">nonadult</media:rating>
+        <media:description type="plain">Sit</media:description>
+      </media:content>
+    </item>
+    <item>
       <title>Article</title>
       <guid>article</guid>
+      <atom:author>
+        <atom:name>Jane Doe</atom:name>
+        <atom:uri>https://example.com</atom:uri>
+      </atom:author>
       <description><![CDATA[
         <p>Inventore dolore voluptatum doloremque placeat animi aliquam. Suscipit neque exercitationem laborum voluptas voluptates provident. Veniam nobis inventore consequatur et eum quia. Aut quod cupiditate amet quidem quidem nihil et corporis. Similique magni qui aliquam nihil placeat possimus dolorum. Aut qui quis voluptas quas.</p>
       ]]></description>
@@ -30,16 +76,6 @@
          <p>Inventore dolore voluptatum doloremque placeat animi aliquam. Suscipit neque exercitationem laborum voluptas voluptates provident. Veniam nobis inventore consequatur et eum quia. Aut quod cupiditate amet quidem quidem nihil et corporis. Similique magni qui aliquam nihil placeat possimus dolorum. Aut qui quis voluptas quas.</p>
       ]]></description>
       <enclosure length="33722158" type="audio/mpeg" url="https://traffic.libsyn.com/secure/missionlog/485_-_Warlord.mp3?dest-id=108569" />
-    </item>
-    <item>
-      <guid>status-media</guid>
-      <pubDate>Fri, 24 Mar 2023 15:24:32 +0100</pubDate>
-      <description><![CDATA[
-        <p>Status update with media test.</p>
-      ]]></description>
-      <media:content url="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/M%C3%BCnster%2C_LBS_--_2021_--_9804.jpg/1024px-M%C3%BCnster%2C_LBS_--_2021_--_9804.jpg" type="image/jpeg" fileSize="133271" medium="image">
-        <media:rating scheme="urn:simple">nonadult</media:rating>
-      </media:content>
     </item>
     <item>
       <guid>podcast-cover</guid>

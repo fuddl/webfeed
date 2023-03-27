@@ -105,15 +105,15 @@ const types = {
 	'atom__author': {
 		label: 'Author',
 		properties: {
-			name: {
+			'atom__name': {
 				processer: 'plain',
 				label: 'Author name',
 			},
-			uri: {
+			'atom__uri': {
 				processer: 'url',
 				label: 'Author URI',
 			},
-			email: {
+			'atom__email': {
 				processer: 'email',
 				label: 'Author Email',
 			}
@@ -126,11 +126,11 @@ const types = {
 	'itunes__owner': {
 		label: 'Owner',
 		properties: {
-			name: {
+			'itunes__name': {
 				processer: 'plain',
 				label: 'Owner name',
 			},
-			email: {
+			'itunes__email': {
 				processer: 'url',
 				label: 'Owner email',
 			}
@@ -157,10 +157,14 @@ const types = {
 		label: 'Media',
 		multiple: true,
 		properties: {
-			description: {
+			'media__description': {
 				processer: 'plain',
 				label: 'Media Description',
 			},
+			'media__rating': {
+				processer: 'plain',
+				label: 'Media rating',
+			}
 		}
 	},
 	'rss__enclosure': {
@@ -186,64 +190,70 @@ const getData = (element, type, parent = null) => {
 	} else {
 		processer = type?.processer
 	}
-	if (processer) {
-		switch (processer) {
-			case 'date':
-				value = new Date(element.textContent) 
 
-				if (isNaN(value)) {
-					return false
-				}
-				return value
-			case 'plain':
-				return element.textContent
-			case 'href':
-				try {
-					value = new URL(element.getAttribute('href'))
-				} catch (e) {
-					return false
-				}
-				return value
-			case 'url':
-				try {
-					value = new URL(element.textContent)
-				} catch (e) {
-					return false
-				}
-				return value
-				return value
-			case 'email':
-				try {
-					value = new URL(`mailto:${element.textContent}`)
-				} catch (e) {
-					return false
-				}
-				return value
-			case 'rich':
-				return makeRichText(element.textContent)
-			case 'float':
-				return parseFloat(element.textContent)
-			case 'int':
-				return parseInt(element.textContent)
-			case 'url+type':
-				return {
-					url: element.getAttribute('url'),
-					type: element.getAttribute('type'),
-				}
-			case 'isYes':
-				return element.textContent === 'yes'
-			case 'csv':
-				return element.textContent ? element.textContent.split(',') : null
-		}
-	} else {
-		const output = {}
+	let output = {}
+	if (processer) {
+		output = (() => {
+			switch (processer) {
+				case 'date':
+					value = new Date(element.textContent) 
+
+					if (isNaN(value)) {
+						return false
+					}
+					return value
+				case 'plain':
+					return element.textContent
+				case 'href':
+					try {
+						value = new URL(element.getAttribute('href'))
+					} catch (e) {
+						return false
+					}
+					return value
+				case 'url':
+					try {
+						value = new URL(element.textContent)
+					} catch (e) {
+						return false
+					}
+					return value
+				case 'email':
+					try {
+						value = new URL(`mailto:${element.textContent}`)
+					} catch (e) {
+						return false
+					}
+					return value
+				case 'rich':
+					return makeRichText(element.textContent)
+				case 'float':
+					return parseFloat(element.textContent)
+				case 'int':
+					return parseInt(element.textContent)
+				case 'url+type':
+					return {
+						url: element.getAttribute('url'),
+						type: element.getAttribute('type'),
+					}
+				case 'isYes':
+					return element.textContent === 'yes'
+				case 'csv':
+					return element.textContent ? element.textContent.split(',') : null
+			}
+		})()
+	}
+	if (typeof output === 'object') {
 		for (const child of element.childNodes) {
-			if (child?.tagName && type?.properties?.hasOwnProperty(child.tagName)) {
-				output[child.tagName] = getData(child, type.properties[child.tagName], parent)
+			const ns = getShortNamesspace(child)
+			const selector = `${ns}__${child?.localName}`
+			if (type?.properties?.hasOwnProperty(selector)) {
+				output[selector] = getData(child, type.properties[selector], parent)
 			}
 		}
-		return output
 	}
+	return output
+
 }
 
 const generateItem = (item) => {
@@ -267,6 +277,8 @@ const generateItem = (item) => {
 		}
 	}	
 
+	//console.debug(data)
+
 	if (data?.rss__enclosure?.type?.startsWith('audio/')) {
 		return podcastPlayer({
 			no: data?.itunes__episode,
@@ -288,6 +300,7 @@ const generateItem = (item) => {
 			creator: data?.dc__creator,
 		})
 	}
+
 
 
 	if (data?.rss__description && data?.rss__pubDate) {
