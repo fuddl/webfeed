@@ -105,15 +105,15 @@ const types = {
 	'atom__author': {
 		label: 'Author',
 		properties: {
-			'atom__name': {
+			'name': {
 				processer: 'plain',
 				label: 'Author name',
 			},
-			'atom__uri': {
+			'uri': {
 				processer: 'url',
 				label: 'Author URI',
 			},
-			'atom__email': {
+			'email': {
 				processer: 'email',
 				label: 'Author Email',
 			}
@@ -126,11 +126,11 @@ const types = {
 	'itunes__owner': {
 		label: 'Owner',
 		properties: {
-			'itunes__name': {
+			'name': {
 				processer: 'plain',
 				label: 'Owner name',
 			},
-			'itunes__email': {
+			'email': {
 				processer: 'url',
 				label: 'Owner email',
 			}
@@ -157,11 +157,11 @@ const types = {
 		label: 'Media',
 		multiple: true,
 		properties: {
-			'media__description': {
+			'description': {
 				processer: 'plain',
 				label: 'Media Description',
 			},
-			'media__rating': {
+			'rating': {
 				processer: 'plain',
 				label: 'Media rating',
 			}
@@ -246,7 +246,7 @@ const getData = (element, type, parent = null) => {
 	if (typeof output === 'object') {
 		for (const child of element.childNodes) {
 			const ns = getShortNamesspace(child)
-			const selector = `${ns}__${child?.localName}`
+			const selector = child?.localName
 			if (type?.properties?.hasOwnProperty(selector)) {
 				output[selector] = getData(child, type.properties[selector], parent)
 			}
@@ -277,8 +277,6 @@ const generateItem = (item) => {
 		}
 	}	
 
-	//console.debug(data)
-
 	if (data?.rss__enclosure?.type?.startsWith('audio/')) {
 		return podcastPlayer({
 			no: data?.itunes__episode,
@@ -292,7 +290,10 @@ const generateItem = (item) => {
 		})
 	}
 
-	if ((data?.rss__title || data?.atom__title) && (data?.rss__description || data?.atom__summary || data?.atom__content || data?.content__encoded)) {
+	if (
+		(data?.rss__title || data?.atom__title) &&
+		(data?.rss__description || data?.atom__summary || data?.atom__content || data?.content__encoded)
+	) {
 		return article({
 			title: data.rss__title || data?.atom__title,
 			description: data?.content__encoded || data?.rss__description || data?.atom__summary || data?.atom__content,
@@ -302,12 +303,13 @@ const generateItem = (item) => {
 		})
 	}
 
-
-
-	if (data?.rss__description && data?.rss__pubDate) {
+	if (
+		(data?.rss__description || data?.atom__content) &&
+		(data?.rss__pubDate || data?.atom__updated)) {
 		return status({
-			date: data.rss__pubDate,
-			description: data.rss__description,
+			author: data?.atom__author,
+			date: data?.rss__pubDate || data?.atom__updated,
+			text: data.rss__description || data?.atom__content,
 			images: data?.media__content,
 		})
 	}

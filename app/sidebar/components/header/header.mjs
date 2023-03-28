@@ -71,6 +71,10 @@ const header = (vars) => {
 			}
 		}, 10);
 	}
+
+	window.addEventListener('scroll', () => {
+		wrapper.classList.toggle('header--compact', window.scrollY > 1)
+	})
 	return wrapper
 }
 

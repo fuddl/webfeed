@@ -6,6 +6,19 @@ const status = (vars) => {
 
 	const wrapper = document.createElement('section')
 	wrapper.classList.add('status')
+
+	if (vars?.author) {
+		const target = vars?.author?.email
+		const author = document.createElement(target ? 'a' : 'span')
+		author.classList.add('status__author')
+		if (target) {
+			author.setAttribute('href', target)
+		}
+		author.innerText = vars.author.name
+		wrapper.appendChild(author)
+		wrapper.appendChild(document.createTextNode(' '))
+	}
+
 	if (vars?.date) {
 		const date = document.createElement('time')
 		date.classList.add('status__date')
@@ -13,8 +26,20 @@ const status = (vars) => {
 		wrapper.appendChild(date)
 	}
 
-	if (vars?.description) {
-		wrapper.appendChild(vars.description)
+	if (vars?.text) {
+		const singleParagraph = vars.text.querySelectorAll('p').length == 1
+		const textWrap = document.createElement('div')
+		textWrap.appendChild(vars.text)
+		textWrap.classList.add('status__text')
+		if (singleParagraph) {
+			const length = textWrap.innerText.length
+			if (length < 60 && length > 30) {
+				textWrap.classList.add('status__text--short')
+			} else if (length <= 30) {
+				textWrap.classList.add('status__text--very-short')
+			}
+		}
+		wrapper.appendChild(textWrap)
 	}
 
 	if (vars?.images?.length === 1) {

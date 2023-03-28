@@ -67,11 +67,11 @@ const cleanUpSteps = [
 		}
 		return dom
 	},
-	// remove empty paragraphs
+	// remove empty paragraphs (and other things that shouldn't be empty)
 	(dom) => {
-		const paragraphs = dom.querySelectorAll('p')
+		const paragraphs = dom.querySelectorAll('p, ul, ol, dl')
 		for (const p of paragraphs) {
-			const isEmtpy = /^\s+$/.test(p.innerText) && p.childNodes.length == 1
+			const isEmtpy = /^(\s+)?$/.test(p.innerText) && p.children.length == 0
 			if (isEmtpy) {
 				p.parentNode.removeChild(p)
 			}

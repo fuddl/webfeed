@@ -14,3 +14,21 @@
 .status__date {
 	font-size: .75em;
 }
+
+.status__text--short {
+	font: var(--big);
+}
+
+.status__text--very-short {
+	font: var(--bigger);
+}
+
+.status__text > p {
+	margin: 1rem 0;
+}
+.status__text > blockquote {
+	font-size: inherit;
+	border-left: 2px solid;
+	margin: 0;
+	padding: 0 0 0 1em;
+}

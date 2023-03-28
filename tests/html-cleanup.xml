@@ -91,6 +91,7 @@
       <title>Empty Paragraphs</title>
       <guid>empty-p</guid>
       <content:encoded><![CDATA[
+         <ul></ul>
          <p></p>
          <p> </p>
          <p>&nbsp;</p>

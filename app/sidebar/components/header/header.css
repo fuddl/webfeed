@@ -3,7 +3,6 @@
 	box-shadow: 0 2px 8px var(--toolbar-box-shadow);
 
 	padding: 2em;
-	grid-gap: 0 2em;
 	position: sticky;
 	inset: 0 0 auto 0;
 	z-index: 1;
@@ -12,16 +11,41 @@
 	--header-color: white;
 	background: var(--header-bg);
 	color: var(--header-color);
-	transition: color .25s, background .25s;
+	transition: color .25s, background .25s, padding .25s;
+}
+
+.header::before {
+	display: block;
+	content: '';
+	inset: auto 0 99% 0;
+	background: inherit;
+	position: absolute;
+	height: 100vh;
 }
 
 .header__title {
 	margin: 0 auto;
 	max-width: var(--layout-width);
+	transition: font-size .25s;
 }
 
 .header__subtitle {
-	margin: 0 auto;
+	margin: .5rem auto 0;
 	font: var(--big);
 	max-width: var(--layout-width);
+	transition: line-height .25s, color .25s, margin-top .25s;
+}
+
+.header--compact {
+	padding: 1em 2em;
+}
+
+.header--compact > .header__subtitle {
+	line-height: 0;
+	color: transparent;
+	margin-top: 0;
+}
+
+.header--compact > .header__title {
+	font: var(--big);
 }
