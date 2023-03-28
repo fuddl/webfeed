@@ -1,8 +1,5 @@
 import { requreStylesheet } from './../style.mjs'
-import colorThief from '../../../../node_modules/colorthief/dist/color-thief.mjs'
-import { rgb } from '../../../../node_modules/wcag-contrast/dist/index.m.js'
-
-const thief = new colorThief()
+import { getTextColorsFromImage } from './../../image-colours.mjs'
 
 const header = (vars) => {
 	requreStylesheet('sidebar/components/header/header.css')
@@ -29,32 +26,9 @@ const header = (vars) => {
 		const image = document.createElement('img')
 		image.setAttribute('src', vars.image.url)
 		image.classList.add('header__avatar')
-		image.addEventListener('load', async () => {
-			const bgOptions = await thief.getPalette(image)
-			const fgOptions = [[0,0,0], [255,255,255]]
-			if (bgOptions) {
-				let bestContrast = null
-				for (let color of bgOptions) {
-					for (let fcolor of fgOptions) {
-						if (bestContrast) {
-							bestContrast = {
-								background: color,
-								color: fcolor,
-							}
-						} else {
-							if (rgb(fcolor, color) > bestContrast) {
-								bestContrast = {
-									background: color,
-									color: fcolor,
-								}
-							}
-						}
-					}
-				}
-				wrapper.style.setProperty("--header-bg", `#${bestContrast.background.map(x => x.toString(16).padStart(2, '0')).join('')}`);
-				wrapper.style.setProperty("--header-color", `#${bestContrast.color.map(x => x.toString(16).padStart(2, '0')).join('')}`);
-				
-			}
+		getTextColorsFromImage(image, (bestContrast) => {
+			wrapper.style.setProperty("--header-bg", `#${bestContrast.background.map(x => x.toString(16).padStart(2, '0')).join('')}`);
+			wrapper.style.setProperty("--header-color", `#${bestContrast.color.map(x => x.toString(16).padStart(2, '0')).join('')}`);
 		})
 		let poll = setInterval(function () {
 			if (typeof image?.naturalWidth == 'number') {

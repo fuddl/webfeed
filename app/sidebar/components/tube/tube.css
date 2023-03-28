@@ -1,0 +1,46 @@
+.tube {
+  margin: 1rem auto;
+  padding: 0 1rem;
+  max-width: var(--layout-width);
+}
+
+.tube__poster {
+  background: var(--poster-bg, black);
+  color: var(--poster-color, white);
+  padding: 2rem;
+  aspect-ratio: 16/9;
+  display: grid;
+  grid-template-areas: 'only';
+}
+
+.tube__poster:hover {
+  text-decoration: none;
+}
+
+.tube__poster::before {
+  content: '▶';
+  opacity: .1;
+  font-size: 20rem;
+  margin: auto;
+  line-height: 0;
+  grid-area: only;
+}
+
+.tube__title {
+  font: var(--bigger);
+  margin: auto auto 0 0;
+  cursor: pointer;
+  grid-area: only;
+}
+
+@media (max-width: 840px) {
+  .tube__title {
+    font: var(--big);
+  }
+}
+
+@media (max-width: 330px) {
+  .tube__title {
+    font-size: 9vw;
+  }
+}

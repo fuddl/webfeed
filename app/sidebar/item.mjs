@@ -2,6 +2,7 @@ import { status } from './components/status/status.mjs'
 import { article } from './components/article/article.mjs'
 import { sheet } from './components/sheet/sheet.mjs'
 import { nexus } from './components/nexus/nexus.mjs'
+import { tube } from './components/tube/tube.mjs'
 import { podcastPlayer } from './components/podcastPlayer/podcastPlayer.mjs'
 import { makeRichText, nl2p } from './richText.mjs'
 
@@ -13,6 +14,7 @@ const nsAliases = {
 	'http://search.yahoo.com/mrss': 'media', 
 	'http://purl.org/dc/elements/1.1': 'dc', 
 	'http://www.itunes.com/dtds/podcast-1.0.dtd': 'itunes',
+	'http://www.youtube.com/xml/schemas/2015': 'youtube',
 }
 
 function getShortNamesspace(node) {
@@ -178,6 +180,10 @@ const types = {
 	'itunes__author': {
 		processer: 'plain',
 		label: 'Author',
+	},
+	'youtube__videoId': {
+		processer: 'plain',
+		label: 'Youtube video id',
 	}
 }
 
@@ -311,6 +317,14 @@ const generateItem = (item) => {
 			date: data?.rss__pubDate || data?.atom__updated,
 			text: data.rss__description || data?.atom__content,
 			images: data?.media__content,
+		})
+	}
+
+	if (data?.youtube__videoId) {
+		return tube({
+			title: data.rss__title || data?.atom__title,
+			id: data?.youtube__videoId,
+			link: data?.rss__link || data?.atom__link,
 		})
 	}
 
