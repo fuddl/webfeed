@@ -146,6 +146,43 @@ const cleanUpSteps = [
 		}
 
 		return dom
+	},
+	// transform dumb tables
+	(dom) => {
+		const tables = dom.querySelectorAll('table')
+		for (const table of tables) {
+			if (
+				table.querySelectorAll('tr').length === 1 &&
+				table.querySelectorAll('td').length === 2 &&
+				table.querySelectorAll('th').length === 0
+			) {
+				const cols = document.createElement('div')
+				const cells = table.querySelectorAll('td')
+				cols.classList.add('cols')
+				for (const cell of cells) {
+					const column = document.createElement('div')
+					for (const node of cell.children) {
+						column.appendChild(node)
+					}
+					cols.appendChild(column)
+				}
+				table.parentNode.replaceChild(cols, table)
+			} else if (
+				table.querySelectorAll('tr').length === table.querySelectorAll('tr > td, tr > th').length
+			) {
+				const cells = table.querySelectorAll('td, th')
+				const rows = new DocumentFragment 
+				for (const cell of cells) {
+					const paragraph = document.createElement('p')
+					for (const node of cell.children) {
+						paragraph.appendChild(node)
+					}
+					rows.appendChild(paragraph)
+				}
+				table.parentNode.replaceChild(rows, table)
+			}
+		}
+		return dom
 	}
 ]
 
