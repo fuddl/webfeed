@@ -2,7 +2,7 @@
   "name": "__MSG_appName__",
   "short_name": "__MSG_appShortName__",
   "description": "__MSG_appDescription__",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "manifest_version": 2,
   "default_locale": "en",
   "icons": {
@@ -18,7 +18,7 @@
     "default_icon": "images/feed.svg",
     "default_title": "Feeds",
     "default_panel": "sidebar/feeds.html",
-    "open_at_install": true
+    "open_at_install": false
   },
   "permissions": [
     "storage",
