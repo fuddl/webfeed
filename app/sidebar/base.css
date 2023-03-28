@@ -4,7 +4,7 @@
 	--toolbar-border: rgba(12, 12, 13, 0.2);
 	--toolbar-box-shadow: rgba(12, 12, 13, 0.1);
 
-	--layout-width: 48em;
+	--layout-width: 48rem;
 }
 
 @media (prefers-color-scheme: dark) {

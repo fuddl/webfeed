@@ -32,8 +32,6 @@ const header = (vars) => {
 		image.addEventListener('load', async () => {
 			const bgOptions = await thief.getPalette(image)
 			const fgOptions = [[0,0,0], [255,255,255]]
-			console.debug('bgOptions')
-			console.debug(bgOptions)
 			if (bgOptions) {
 				let bestContrast = null
 				for (let color of bgOptions) {
@@ -54,7 +52,7 @@ const header = (vars) => {
 					}
 				}
 				wrapper.style.setProperty("--header-bg", `#${bestContrast.background.map(x => x.toString(16).padStart(2, '0')).join('')}`);
-				wrapper.style.setProperty("--header-color", `#${fcolor.color.map(x => x.toString(16).padStart(2, '0')).join('')}`);
+				wrapper.style.setProperty("--header-color", `#${bestContrast.color.map(x => x.toString(16).padStart(2, '0')).join('')}`);
 				
 			}
 		})
@@ -63,11 +61,6 @@ const header = (vars) => {
 				clearInterval(poll);
 				if (image.naturalWidth == image.naturalHeight) {
 					const probablyASVG = (image.naturalWidth == 0 && image.naturalHeight == 0)
-					if (probablyASVG || (image.naturalWidth / window.devicePixelRatio) >= 45) {
-						image.setAttribute('width', '45')
-						wrapper.appendChild(image)
-						wrapper.classList.add('header--has-image')
-					}
 					if (probablyASVG || (image.naturalWidth / window.devicePixelRatio) >= 32) {
 						const faviconLink = document.createElement('link')
 						faviconLink.setAttribute('rel', 'shortcut icon')
