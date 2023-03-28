@@ -4,7 +4,7 @@
   "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   "scripts": {
     "dev": "web-ext run --source-dir ./app --start-url http://127.0.0.1:8081 & ./node_modules/http-server/bin/http-server ./tests & ./node_modules/rollup/dist/bin/rollup --config rollup.config.mjs --watch",
-    "build": "web-ext build --source-dir ./app"
+    "build": "./node_modules/rollup/dist/bin/rollup --config rollup.config.mjs && web-ext build --source-dir ./app"
   },
   "devDependencies": {
     "http-server": "^14.1.1",
