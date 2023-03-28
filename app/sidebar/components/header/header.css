@@ -33,6 +33,7 @@
 	margin: .5rem auto 0;
 	font: var(--big);
 	max-width: var(--layout-width);
+	line-height: 1.2;
 	transition: line-height .25s, color .25s, margin-top .25s;
 }
 

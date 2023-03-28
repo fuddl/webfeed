@@ -62,6 +62,8 @@ const cleanUpSteps = [
 			 	});
 				if (containsNonWhitespaceTextNodes) {
 					image.classList.add('inline-image')
+					image.parentNode.insertBefore(document.createTextNode(' '), image)
+					image.parentNode.insertBefore(document.createTextNode(' '), image.nextSibling)
 				}
 			}
 		}
