@@ -306,6 +306,7 @@ const generateItem = (item) => {
 			tags: data?.rss__category || data?.itunes__keywords,
 			creator: data?.dc__creator,
 			link: data?.rss__link || data?.atom__link,
+			comments: data?.rss__comments,
 		})
 	}
 

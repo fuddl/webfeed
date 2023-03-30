@@ -65,6 +65,14 @@ const article = (vars) => {
 		wrapper.appendChild(tagWrapper)
 	}
 
+	if (vars?.comments) {
+		const commentLink = document.createElement('a')
+		commentLink.classList.add('article__comments')
+		commentLink.innerText = '💬 Comments'
+		commentLink.setAttribute('href', vars.comments)
+		wrapper.appendChild(commentLink)
+	}
+
 	return wrapper
 }
 
