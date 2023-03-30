@@ -1,3 +1,5 @@
+import emojiRegex from '../../node_modules/emoji-regex/index.mjs'
+
 const heading = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6']
 const lists = ['UL', 'OL', 'LI', 'DT', 'DD', 'DL']
 const block = ['P', 'BLOCKQUOTE', 'FIGURE', 'FIGCAPTION', ...heading, ...lists]
@@ -51,6 +53,19 @@ const textFilter = [
 ]
 
 const cleanUpSteps = [
+	// replace emoji images by emoji
+	(dom) => {
+		const images = dom.querySelectorAll('img[alt]')
+		const emojiOnlyExpression = new RegExp(/^/.source + emojiRegex().source + /$/.source)
+		console.debug(emojiOnlyExpression)
+		for (const image of images) {
+			if (image.getAttribute('alt').match(emojiOnlyExpression)) {
+				let textRepresentation = document.createTextNode(image.getAttribute('alt'))
+				image.parentNode.replaceChild(textRepresentation, image)
+			}	
+		}
+		return dom
+	},
 	// scale inline image
 	(dom) => {
 		const images = dom.querySelectorAll('img')

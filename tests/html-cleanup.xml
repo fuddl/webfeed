@@ -29,38 +29,45 @@
       <title>Inline images</title>
       <guid>headlines</guid>
       <content:encoded><![CDATA[
-          <h1><img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀"> The emoji to left should be text sized.</h1>
-          <p><img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀"> The emoji to left should be text sized.</p>
-          <p><strong><img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀"> The</strong> emoji to left should be text sized.</p>
+          <h1><img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg"> The emoji to left should be text sized.</h1>
+          <p><img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg"> The emoji to left should be text sized.</p>
+          <p><strong><img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg"> The</strong> emoji to left should be text sized.</p>
           <table>
             <tr>
               <td>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀"> The emoji to left should be text sized.
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" > The emoji to left should be text sized.
               </td>
               <td>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀"> The emoji to left should be text sized.
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg"> The emoji to left should be text sized.
               </td>
             </tr>
             <tr>
               <td>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀"> The emoji to left should be text sized.
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" > The emoji to left should be text sized.
               </td>
               <td>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀"> The emoji to left should be text sized.
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" > The emoji to left should be text sized.
               </td>
             </tr>
           </table>
           <p>The below images should be big</p>
           <p>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" />
           </p>
           <p>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg"  />
             &nbsp;
           </p>
           <h4><strong><em>Test</em></strong> <img src="https://s.w.org/images/core/emoji/14.0.0/72x72/2604.png" alt="☄"></h4>
-          <p><strong>It is also the largest open source food database in the world!&nbsp;<img src="https://s.w.org/images/core/emoji/14.0.0/72x72/1f30d.png" alt="🌍"> (yep!)</strong></p>
-          <p><strong>lorem <img src="https://s.w.org/images/core/emoji/14.0.0/72x72/1f30d.png" alt="🌍"></strong></p>
+          <p><strong>It is also the largest open source food database in the world!&nbsp;<img src="https://s.w.org/images/core/emoji/14.0.0/72x72/1f30d.png"> (yep!)</strong></p>
+          <p><strong>lorem <img src="https://s.w.org/images/core/emoji/14.0.0/72x72/1f30d.png" ></strong></p>
+      ]]></content:encoded>
+    </item>
+    <item>
+      <title>Replace image emoji with emoji</title>
+      <guid>text emoji</guid>
+      <content:encoded><![CDATA[
+         <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Twemoji_1f600.svg" alt="😀" />
       ]]></content:encoded>
     </item>
     <item>
