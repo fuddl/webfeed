@@ -55,16 +55,15 @@ const cleanUpSteps = [
 	(dom) => {
 		const images = dom.querySelectorAll('img')
 		for (const image of images) {
-			const closestBlock = image.closest([...block, ...table, 'body'].join(', '))
-			if (closestBlock) {
-				const containsNonWhitespaceTextNodes = Array.from(closestBlock.childNodes).some(node => {
-			    	return node.nodeType === Node.TEXT_NODE && !/^\s+$/.test(node.textContent);
-			 	});
-				if (containsNonWhitespaceTextNodes) {
-					image.classList.add('inline-image')
-					image.parentNode.insertBefore(document.createTextNode(' '), image)
-					image.parentNode.insertBefore(document.createTextNode(' '), image.nextSibling)
-				}
+		 	const previousSiblingIsInline = image?.previousElementSibling?.nodeName ? inline.includes(image.previousElementSibling.nodeName) : false
+		 	const nextSiblingIsInline = image?.nextElementSibling?.nodeName ? inline.includes(image.nextElementSibling.nodeName) : false
+			const previousSiblingIsNonWhitespace = image?.previousSibling?.nodeType == 3 ? !/^\s+$/.test(image.previousSibling.textContent) : false
+			const nextSiblingIsNonWhitespace = image?.nextSibling?.nodeType == 3 ? !/^\s+$/.test(image.nextSibling.textContent) : false
+
+			if (previousSiblingIsNonWhitespace || previousSiblingIsInline || nextSiblingIsInline || nextSiblingIsNonWhitespace) {
+				image.classList.add('inline-image')
+				image.parentNode.insertBefore(document.createTextNode(' '), image)
+				image.parentNode.insertBefore(document.createTextNode(' '), image.nextSibling)
 			}
 		}
 		return dom
