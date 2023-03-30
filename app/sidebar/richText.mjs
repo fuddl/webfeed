@@ -29,7 +29,7 @@ const attributes = {
 	},
 	SOURCE: {
 		src: () => true,
-		srcSet: () => true,
+		srcset: () => true,
 		type: () => true,
 	},
 	IFRAME: {
@@ -57,7 +57,6 @@ const cleanUpSteps = [
 	(dom) => {
 		const images = dom.querySelectorAll('img[alt]')
 		const emojiOnlyExpression = new RegExp(/^/.source + emojiRegex().source + /$/.source)
-		console.debug(emojiOnlyExpression)
 		for (const image of images) {
 			if (image.getAttribute('alt').match(emojiOnlyExpression)) {
 				let textRepresentation = document.createTextNode(image.getAttribute('alt'))
@@ -70,12 +69,14 @@ const cleanUpSteps = [
 	(dom) => {
 		const images = dom.querySelectorAll('img')
 		for (const image of images) {
+			const parentElement = image.parentNode;
+			const isInPicture = parentElement instanceof HTMLPictureElement || parentElement instanceof DocumentFragment
 		 	const previousSiblingIsInline = image?.previousElementSibling?.nodeName ? inline.includes(image.previousElementSibling.nodeName) : false
 		 	const nextSiblingIsInline = image?.nextElementSibling?.nodeName ? inline.includes(image.nextElementSibling.nodeName) : false
 			const previousSiblingIsNonWhitespace = image?.previousSibling?.nodeType == 3 ? !/^\s+$/.test(image.previousSibling.textContent) : false
 			const nextSiblingIsNonWhitespace = image?.nextSibling?.nodeType == 3 ? !/^\s+$/.test(image.nextSibling.textContent) : false
 
-			if (previousSiblingIsNonWhitespace || previousSiblingIsInline || nextSiblingIsInline || nextSiblingIsNonWhitespace) {
+			if (!isInPicture && (previousSiblingIsNonWhitespace || previousSiblingIsInline || nextSiblingIsInline || nextSiblingIsNonWhitespace)) {
 				image.classList.add('inline-image')
 				image.parentNode.insertBefore(document.createTextNode(' '), image)
 				image.parentNode.insertBefore(document.createTextNode(' '), image.nextSibling)
