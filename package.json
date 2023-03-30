@@ -13,6 +13,7 @@
   "dependencies": {
     "colord": "^2.9.3",
     "colorthief": "^2.2.0",
+    "turndown": "^7.1.2",
     "wcag-contrast": "^3.0.0"
   }
 }

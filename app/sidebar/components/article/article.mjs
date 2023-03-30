@@ -1,4 +1,5 @@
 import { requreStylesheet } from './../style.mjs'
+import TurndownService from '../../../../node_modules/turndown/lib/turndown.es.js'
 
 
 const article = (vars) => {
@@ -71,6 +72,19 @@ const article = (vars) => {
 		commentLink.innerText = '💬 Comments'
 		commentLink.setAttribute('href', vars.comments)
 		wrapper.appendChild(commentLink)
+	}
+
+	const turndownService = new TurndownService({
+		headingStyle: 'atx',
+		linkStyle: 'referenced',
+		linkReferenceStyle: 'shortcut',
+	})
+	if (vars?.description) {
+		const shareLink = document.createElement('a')
+		shareLink.classList.add('article__comments')
+		shareLink.innerText = '💬 Share'
+		shareLink.setAttribute('href', `mailto:?subject=${encodeURIComponent(vars.title)}&body=${encodeURIComponent(turndownService.turndown(wrapper.innerHTML))})`)
+		wrapper.appendChild(shareLink)
 	}
 
 	return wrapper
