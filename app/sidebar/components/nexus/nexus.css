@@ -1,0 +1,9 @@
+.nexus {
+	margin: 4rem auto;
+	padding: 0 4rem;
+	max-width: var(--layout-width);
+	display: block;
+	font: var(--bigger);
+	color: inherit;
+	text-decoration-thickness: .1px;
+}

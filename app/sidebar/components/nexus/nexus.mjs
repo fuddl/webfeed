@@ -4,12 +4,11 @@ import { requreStylesheet } from './../style.mjs'
 const nexus = (vars) => {
 	requreStylesheet('sidebar/components/nexus/nexus.css')
 
-	const wrapper = document.createElement('section')
+	const wrapper = document.createElement('a')
 	wrapper.classList.add('nexus')
+	wrapper.setAttribute('href', vars.link)
 
-	if (vars?.title) {
-		wrapper.innerText = vars.title
-	}
+	wrapper.innerText = vars.title
 
 	return wrapper
 }

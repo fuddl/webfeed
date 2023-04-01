@@ -329,6 +329,13 @@ const generateItem = (item) => {
 		})
 	}
 
+	if (data?.rss__link || data?.atom__link) {
+		return nexus({
+			title: data.rss__title || data?.atom__title,
+			link: data?.rss__link || data?.atom__link,
+		})
+	}
+
 	return sheet(data, types)
 }
 
