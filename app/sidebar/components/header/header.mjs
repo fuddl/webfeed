@@ -1,31 +1,21 @@
 import { requreStylesheet } from './../style.mjs'
 import { getTextColorsFromImage } from './../../image-colours.mjs'
 
+const getFavicon = async () => {
+	const answer = await browser.runtime.sendMessage({
+		type: 'getFavicon'
+	});
+}
+
+
 const header = (vars) => {
 	requreStylesheet('sidebar/components/header/header.css')
 
 	const wrapper = document.createElement('header')
-	wrapper.classList.add('header')
-	if (vars?.title) {
-		const title = document.createElement('h1')
-		title.classList.add('header__title')
-		title.innerText = vars.title
-		wrapper.appendChild(title)
 
-		const docTitle = document.createElement('title')
-		docTitle.innerText = vars.title
-		document.head.appendChild(docTitle)
-	}
-	if (vars?.subtitle) {
-		const subtitle = document.createElement('p')
-		subtitle.classList.add('header__subtitle')
-		subtitle.innerText = vars.subtitle
-		wrapper.appendChild(subtitle)
-	}
-	if (vars?.image?.url) {
+	const colorise = (imageUrl) => {
 		const image = document.createElement('img')
-		image.setAttribute('src', vars.image.url)
-		image.classList.add('header__avatar')
+		image.setAttribute('src', imageUrl)
 		getTextColorsFromImage(image, (bestContrast) => {
 			wrapper.style.setProperty("--header-bg", `#${bestContrast.background.map(x => x.toString(16).padStart(2, '0')).join('')}`);
 			wrapper.style.setProperty("--header-color", `#${bestContrast.color.map(x => x.toString(16).padStart(2, '0')).join('')}`);
@@ -45,6 +35,38 @@ const header = (vars) => {
 			}
 		}, 10);
 	}
+
+	wrapper.classList.add('header')
+	if (vars?.title) {
+		const title = document.createElement('h1')
+		title.classList.add('header__title')
+		title.innerText = vars.title
+		wrapper.appendChild(title)
+
+		const docTitle = document.createElement('title')
+		docTitle.innerText = vars.title
+		document.head.appendChild(docTitle)
+	}
+	if (vars?.subtitle) {
+		const subtitle = document.createElement('p')
+		subtitle.classList.add('header__subtitle')
+		subtitle.innerText = vars.subtitle
+		wrapper.appendChild(subtitle)
+	}
+
+	if (vars?.image?.url) {
+		colorise(vars?.image?.url)
+	} else {
+		(async () => {
+			const favicon = await getFavicon()
+			browser.runtime.onMessage.addListener(message => {
+				if (message.type === 'foundFavicon') {
+					colorise(message.payload.url)
+				}
+			});
+		})()
+	}
+
 
 	window.addEventListener('scroll', () => {
 		wrapper.classList.toggle('header--compact', window.scrollY > 1)

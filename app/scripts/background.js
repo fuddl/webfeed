@@ -4,7 +4,25 @@ browser.runtime.onInstalled.addListener((details) => {
   console.log('previousVersion', details.previousVersion)
 })
 
-browser.runtime.onMessage.addListener(async (data, sender) => {
+async function getFavIconUrl(tabId) {
+  const MAX_POLL_COUNT = 10;
+  let pollCount = 0;
+
+  while (true) {
+    const tab = await new Promise((resolve) => {
+      chrome.tabs.get(tabId, resolve);
+    });
+
+    if (tab.favIconUrl || pollCount >= MAX_POLL_COUNT) {
+      return tab.favIconUrl;
+    }
+
+    pollCount++;
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
+}
+
+browser.runtime.onMessage.addListener(async (data, sender, sendResponse) => {
   if (data.type == 'foundFeeds') {
     browser.pageAction.show(sender.tab.id)
     
@@ -15,6 +33,14 @@ browser.runtime.onMessage.addListener(async (data, sender) => {
     // browser.pageAction.onClicked.addListener(async () => {
     //   await browser.sidebarAction.toggle()
     // })
+  }
+  if (data.type == 'getFavicon') {
+    sendResponse()
+    const faviconUrl = await getFavIconUrl(sender.tab.id)
+    await browser.tabs.sendMessage(sender.tab.id, {
+        type: 'foundFavicon',
+        payload: { url: faviconUrl },
+    });
   }
 })
 

@@ -23,11 +23,18 @@ const getTextColorsFromImage = (image, callback) => {
       if (bgOptions) {
         for (let color of bgOptions) {
           for (let fcolor of fgOptions) {
+            // prefer text colours that are white. If the color is white,
+            // give the combination a bonus
             const bonus = fcolor.join('') === '255255255' ? 2 : 0
+
+            // prefer colours other than black. If the colour is too close to
+            // black, give the combination a handycap
+            const handycap = color.reduce((total, num) => total + num, 0) < 15 ? 15 : 0
+            
             combinations.push({
               background: color,
               color: fcolor,
-              contrast: rgb(fcolor, color) + bonus,
+              contrast: rgb(fcolor, color) + bonus - handycap,
             })
           }
         }

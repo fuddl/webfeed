@@ -5,5 +5,8 @@
 	display: block;
 	font: var(--bigger);
 	color: inherit;
-	text-decoration-thickness: .1px;
+}
+
+.nexus:hover {
+	text-decoration-thickness: 1.2px;
 }
