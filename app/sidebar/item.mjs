@@ -142,6 +142,18 @@ const types = {
 		processer: 'float',
 		label: 'Priority',
 	},
+	'sitemap__loc': {
+		processer: 'url',
+		label: 'Location',
+	},
+	'sitemap__lastmod': {
+		processer: 'date',
+		label: 'Last modified',
+	},
+	'sitemap__changefreq': {
+		processer: 'changefreq',
+		label: 'Change fraquency',
+	},
 	'rank__rank': {
 		processer: 'int',
 		label: 'Rank',
@@ -281,7 +293,7 @@ const generateItem = (item) => {
 				console.debug(type)
 			}
 		}
-	}	
+	}
 
 	if (data?.rss__enclosure?.type?.startsWith('audio/')) {
 		return podcastPlayer({
